@@ -1,0 +1,13 @@
+@import "./lib/reset";
+@import "./lib/mixins";
+
+// widgets
+@import "../components/widgets/styles/Header";
+@import "../components/widgets/styles/Footer";
+@import "../components/widgets/styles/NotFoundSearches";
+
+// pages
+@import "../components/pages/static_pages/styles/Home.scss";
+@import "../components/pages/static_pages/styles/NotFound";
+
+@import "../components/pages/auth/styles/LogIn";

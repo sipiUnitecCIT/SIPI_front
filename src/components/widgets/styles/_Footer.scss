@@ -1,0 +1,64 @@
+%footerAnchor{
+  @include navbarLinks;
+}
+
+.Footer{
+  $footer-gap: 20px;
+  
+  @include navbar;
+  @apply py-3;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $footer-gap;
+  
+  @screen md{
+    grid-template-columns: repeat(2, auto);
+  }
+  
+  &__links{
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: $footer-gap;
+    
+    @screen md{
+      grid-template-columns: repeat(3, auto);
+    }
+  }
+  
+  &__anchor{
+    @extend %footerAnchor;
+    
+    &--icon{
+      @extend %footerAnchor;
+      grid-template-columns: auto;
+      
+      svg{
+        width: 30px;
+      }
+    }
+  }
+  
+  &__socials{
+    @apply pl-3;
+    display: grid;
+    // grid-template-columns: repeat(2, auto);
+    justify-content: start;
+    justify-items: start;
+    align-items: center;
+    gap: 15px;
+    
+    @screen md{
+      grid-template-columns: repeat(2, auto);
+      justify-content: end;
+    }
+    
+    div{
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.NotFound{
+  @apply bg-primary-light;
+  height: 100vh;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

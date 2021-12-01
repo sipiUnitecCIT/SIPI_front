@@ -1,0 +1,175 @@
+.Header {
+  $nav-min-width: "900px";
+  
+  // display: none;
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+  
+  &.open &__mask-mobile, 
+  {
+    opacity: 1;
+  }
+  &.open &__navbar{
+    transform: translateX(0);
+  }
+  
+  &__mask-mobile{
+    @include mask;
+    z-index: 30;
+    position: absolute;
+    opacity: 0;
+    transition: .4s;
+    
+    @media screen and (min-width: $nav-min-width){
+      position: static;
+    }
+  }
+  &__mask-desktop{
+    @include mask;
+    position: static;
+    z-index: 30;
+    opacity: 0;
+    
+    @media screen and (min-width: $nav-min-width){
+      position: absolute;
+    }
+  }
+  
+  &__navbar{
+    // @apply py-4 px-10;
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: .3s;
+    display: grid;
+    align-content: flex-start;
+    
+    @media screen and (min-width: $nav-min-width){
+      @apply bg-secondary-20 py-4 px-10;
+      position: static;
+      transform: none;
+      display: block;
+    }
+  }
+  
+  nav{
+    @apply bg-secondary-20 p-4;
+    position: relative;
+    z-index: 90;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    @media screen and (min-width: $nav-min-width){
+      @apply p-0;
+      grid-template-columns: 1fr auto;
+    }
+  }
+  
+  &__list{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 20px;
+    
+    justify-content: start;
+    
+    @media screen and (min-width: $nav-min-width){
+      grid-template-columns: unset;
+      grid-auto-flow: column;
+    }
+  }
+  
+  &__user-login{
+    display: grid;
+    gap: 20px;
+    
+    @media screen and (min-width: $nav-min-width){
+      
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+  
+  &__button{
+    z-index: 10;
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    transition: .1s;
+    @apply bg-primary-light p-4 rounded-full;
+    
+    svg{
+      @apply fill-neutral-white;
+      width: 25px;
+      transform: translateY(-1px);
+    }
+    
+    &:active{
+      @apply bg-primary-light
+    }
+    
+    @media screen and (min-width: $nav-min-width){
+      display: none;
+    }
+  }
+  
+  &__link, &__dropdown-btn{
+    @apply rounded-md p-2 text-xs text-black;
+    transition: .3s;
+
+    @media screen and (max-width: $nav-min-width){
+      &:active{
+        @apply bg-primary-dark text-white;
+      }
+    }
+    @media screen and (min-width: $nav-min-width){
+      &:hover{
+        @apply bg-primary-dark text-white;
+      }
+    }
+    
+    &--button{
+      @apply bg-primary-dark text-white;
+    }
+  }
+  
+  &__dropdown{
+    position: relative;
+  }
+  &__dropdown-btn{
+    text-transform: uppercase;
+    
+    &.open{
+      @apply bg-primary-light text-white;
+    }
+  }
+  &__dropdown-list{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    
+    li{
+      
+      &:nth-of-type(2n + 1){
+        border-bottom: 1px dashed white;
+      }
+      &:hover{
+        background-color: rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+      }
+      
+      a{
+        @apply p-2 text-white;
+        display: block;
+      }
+    }
+  }
+}

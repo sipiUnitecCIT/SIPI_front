@@ -1,0 +1,16 @@
+.form-control{
+  @apply text-secondary-60;
+  span{
+    @apply pl-3 pb-1;
+    display: block
+  }
+  input{
+    @apply p-3 bg-warning-40 rounded-md;
+    width: 100%;
+    
+    &::placeholder{
+      @apply text-secondary-40 tracking-widest;
+      text-transform: uppercase;
+    }
+  }
+}

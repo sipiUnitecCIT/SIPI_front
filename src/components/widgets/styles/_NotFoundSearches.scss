@@ -1,0 +1,36 @@
+.NotFoundSearches{
+  @apply text-warning-40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  
+  &__message{
+    margin-top: 20px;
+    text-align: center;
+    
+    h1{
+      @apply text-2xl;
+      
+      @screen x_sm{
+        @apply text-3xl;
+      }
+      @screen md{
+        @apply text-4xl;
+      }
+    }
+  }
+  
+  &__image{
+    max-width: 200px;
+    
+    img{
+      width: 100%;
+    }
+    
+    @screen md{
+      max-width: 300px;
+    }
+  }
+}

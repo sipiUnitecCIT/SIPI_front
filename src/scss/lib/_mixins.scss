@@ -1,0 +1,55 @@
+@mixin icon{
+  svg{
+    width: 20px;
+    fill: white;
+  }
+}
+@mixin button {
+  @apply bg-secondary-60 rounded-md text-white py-3 px-5;
+  display: block;
+  box-shadow: 0 5px 2px 0 rgba(0, 0, 0, 0.15);
+  transition: .1s;
+  &:active{
+    @apply bg-secondary-40;
+  }
+}
+
+@mixin navbar (){
+  @apply bg-secondary-20 text-sm;
+  @apply px-5 py-2;
+  
+  nav{
+    @apply bg-secondary-20;
+  }
+}
+@mixin navbarLinks (){
+  @apply px-3 py-2 rounded-md tracking-wide;
+  transition: .1s;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  
+  &:active{
+    @apply bg-secondary-60;
+  }
+}
+
+@mixin image-cover-css($image){
+  background-image: url($image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin mask {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+// @mixin input{
+//   @apply rounded-lg;
+//   width: 100%;
+// }
