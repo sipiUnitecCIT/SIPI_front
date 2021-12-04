@@ -8,7 +8,7 @@ const Header = () => {
 
   const handleClose = () => {
     setIsOpen(false)
-    setIsDropDownOpen(false)
+    // setIsDropDownOpen(false)
   }
 
   useEffect(() => {
