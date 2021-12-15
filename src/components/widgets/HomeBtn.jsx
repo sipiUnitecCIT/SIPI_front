@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
-const HomeBtn = ({className, height, width}) => {
+const HomeBtn = ({ className, height, width }) => {
   return (
-    <Link to="/" className={className}>
-      <img height={height} width={width} src="https://i.imgur.com/3A4CAU7.png" alt="" />
+    <Link href="/" className={className}>
+      <a>
+        <img height={height} width={width} src="https://i.imgur.com/3A4CAU7.png" alt="" />
+      </a>
     </Link>
   )
 }

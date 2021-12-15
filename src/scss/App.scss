@@ -7,7 +7,6 @@
 @import "../components/widgets/styles/NotFoundSearches";
 
 // pages
-@import "../components/pages/static_pages/styles/Home.scss";
-@import "../components/pages/static_pages/styles/NotFound";
-
-@import "../components/pages/auth/styles/LogIn";
+@import "../styles/index";
+@import "../styles/notFound";
+@import "../styles/signIn";

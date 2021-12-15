@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
-import Hamburger from '../icons/Hambuger'
+import Link  from "next/link"
+import Hamburger from '@icons/Hambuger'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,39 +22,53 @@ const Header = () => {
         <nav className="">
           <ul className="Header__list">
             <li className="Header__link">
-              <Link to="/" className=" font-semibold">
-                UNITEC
+              <Link href="/">
+                <a className="font-semibold">UNITEC</a>
               </Link>
             </li>
 
             <li className="Header__link">
-              <Link to="/">Principal</Link>
+              <Link href="/">
+                <a>Principal</a>
+              </Link>
             </li>
 
             <li className="Header__link">
-              <Link to="/">Conocimiento CIT</Link>
+              <Link href="/">
+                <a>Conocimiento CIT</a>
+              </Link>
             </li>
 
             <li className="Header__link">
-              <Link to="/">Miembros CIT</Link>
+              <Link href="/">
+                <a>Miembros CIT</a>
+              </Link>
             </li>
 
             <li className="Header__link">
-              <Link to="/">Lineamientos CIT</Link>
+              <Link href="/">
+                <a>Lineamientos CIT</a>
+              </Link>
             </li>
 
             <li className="Header__link">
-              <Link to="/">Proyectos CIT</Link>
+              <Link href="/">
+                <a>Proyectos CIT</a>
+              </Link>
             </li>
 
           </ul>
           
           <ul className="Header__user-login">
             <li className="Header__link">
-              <Link to="/">Registrate</Link>
+              <Link href="/">
+                <a>Registrate</a>
+              </Link>
             </li>
             <li className="Header__link Header__link--button">
-              <Link to="/">Ingresa</Link>
+              <Link href="/">
+                <a>Ingresa</a>
+              </Link>
             </li>
           </ul>
         </nav>

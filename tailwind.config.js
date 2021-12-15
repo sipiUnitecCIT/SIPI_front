@@ -1,8 +1,12 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  // important: true,
-  darkMode: false, // or 'media' or 'class'
+  content:[
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx,scss}',
+    './src/styles/**/*.{scss}',
+  ],
+  media: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
       poppins: ['Poppins', 'sans-serif']
