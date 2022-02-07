@@ -1,0 +1,48 @@
+.InputForm{
+  position: relative;
+  // height: 28.5px;
+  // width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-bottom: 6px;
+  
+  @apply text-sm;
+  
+  &::after{
+    display: block;
+    content: " ";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 1px;
+    @apply bg-light_grey;
+  }
+  
+  &:hover::after{
+    @apply bg-primary;
+  }
+  
+  span{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    @apply font-medium bg-white;
+    transition: .3s;
+    transform: translateY(0px);
+  }
+  
+  span.goUp{
+    @apply text-secondary;
+    transform: translateY(-100%);
+  }
+  
+  input{
+    @apply font-semibold;
+  }
+  
+  .EyeButton{
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 12px);
+  }
+}

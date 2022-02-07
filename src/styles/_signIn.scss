@@ -1,8 +1,56 @@
 .SignIn{
   aside{
-    padding: 0 30px;
+    position: relative;
+    padding: 30px;
+    padding-bottom: 47px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    
+    &::before,
+    &::after,
+    {
+      position: absolute;
+      top: calc(100% - 1px);
+      content: " ";
+      display: block;
+      width: 20px;
+      height: 20px;
+      
+      @apply bg-secondary
+    }
+    
+    &::before{
+      left: 0;
+    }
+    &::after{
+      right: 0;
+    }
+    
+  }
+  
+  .LogIn{
+    z-index: 1;
+    position: relative;
+    padding: 37px 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
+    h2{
+      @apply text-3xl xx_sm:text-4xl font-bold;
+      padding-bottom: 40px;
+    }
+    
+    section{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    
+    a{
+      justify-self: center;
+    }
+    
+    @apply bg-white;
   }
 }

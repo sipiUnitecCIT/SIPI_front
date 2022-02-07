@@ -2,9 +2,13 @@
 @import "./lib/mixins";
 
 // widgets
-@import "../components/widgets/styles/Header";
-@import "../components/widgets/styles/Footer";
-@import "../components/widgets/styles/NotFoundSearches";
+@import "../components/widgets/_styles/Header";
+@import "../components/widgets/_styles/Footer";
+@import "../components/widgets/_styles/NotFoundSearches";
+
+@import "../components/widgets/form/_styles/InputForm";
+@import "../components/widgets/form/_styles/InputCheck";
+@import "../components/widgets/form/_styles/Button";
 
 // pages
 @import "../styles/index";
