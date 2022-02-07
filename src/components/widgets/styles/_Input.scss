@@ -5,7 +5,7 @@
     display: block
   }
   input{
-    @apply p-3 bg-warning-40 rounded-md;
+    @apply p-3 bg-warning-base rounded-md;
     width: 100%;
     
     &::placeholder{

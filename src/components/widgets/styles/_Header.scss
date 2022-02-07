@@ -28,7 +28,7 @@
     align-content: flex-start;
     
     @media screen and (min-width: $nav-min-width){
-      @apply bg-secondary-20 py-4 px-10;
+      @apply bg-white py-4 px-10;
       position: static;
       transform: none;
       display: block;
@@ -36,7 +36,7 @@
   }
   
   nav{
-    @apply bg-secondary-20 p-4;
+    @apply bg-white p-4;
     position: relative;
     z-index: 90;
     
@@ -101,16 +101,16 @@
     bottom: 50px;
     right: 10px;
     transition: .1s;
-    @apply bg-primary-light p-4 rounded-full;
+    @apply bg-secondary p-4 rounded-full;
     
     svg{
-      @apply fill-neutral-white;
+      @apply fill-white;
       width: 25px;
       transform: translateY(-1px);
     }
     
     &:active{
-      @apply bg-primary-light
+      @apply bg-secondary
     }
     
     @media screen and (min-width: $nav-min-width){
@@ -123,17 +123,17 @@
     transition: .3s;
 
     &--button{
-      @apply bg-primary-dark text-white;
+      @apply bg-primary text-white;
     }
     
     @media screen and (max-width: $nav-min-width){
       &:active{
-        @apply bg-primary-dark text-white;
+        @apply bg-primary text-white;
       }
     }
     @media screen and (min-width: $nav-min-width){
       &:hover{
-        @apply text-primary-light;
+        @apply text-secondary;
       }
     }
   }
@@ -145,7 +145,7 @@
     text-transform: uppercase;
     
     &.open{
-      @apply bg-primary-light text-white;
+      @apply bg-secondary text-white;
     }
   }
   &__dropdown-list{

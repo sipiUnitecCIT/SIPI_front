@@ -5,21 +5,21 @@
   }
 }
 @mixin button {
-  @apply bg-secondary-60 rounded-md text-white py-3 px-5;
+  @apply bg-dark_grey rounded-md text-white py-3 px-5;
   display: block;
   box-shadow: 0 5px 2px 0 rgba(0, 0, 0, 0.15);
   transition: .1s;
   &:active{
-    @apply bg-secondary-40;
+    @apply bg-medium;
   }
 }
 
 @mixin navbar (){
-  @apply bg-secondary-20 text-sm;
+  @apply bg-white text-sm;
   @apply px-5 py-2;
   
   nav{
-    @apply bg-secondary-20;
+    @apply bg-white;
   }
 }
 @mixin navbarLinks (){
@@ -30,7 +30,7 @@
   gap: 10px;
   
   &:active{
-    @apply bg-secondary-60;
+    @apply bg-dark_grey;
   }
 }
 

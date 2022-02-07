@@ -8,10 +8,8 @@ module.exports = {
   ],
   media: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      poppins: ['Poppins', 'sans-serif']
-    },
     screens: {
+      xx_sm: '375px',
       x_sm: '480px',
       sm: '576px',
       md: '768px',
@@ -22,10 +20,46 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      black: colors.black,
-      white: colors.white,
+      
+      // Primary Colors
+      primary: "#011055",
+      black: "#141414",
+      
+      // Secondary Colors
+      secondary: "#0A30AD",
+      dark_grey: "#222327",
+      light_grey: "#9AA3AE",
+      medium: "#DEDEDE",
+      white: "#FAFAFC",
+      
+      // Semantic Colors
+      error:{
+        light: "#D83232",
+        base: "#B01212",
+        dark: "#8C0000",
+      },
+      warning:{
+        light: "#FFDE81",
+        base: "#EFB008",
+        dark: "#976400",
+      },
+      info:{
+        light: "#4D82F3",
+        base: "#2563EB",
+        dark: "#0037B3",
+      },
+      success:{
+        light: "#419E6A",
+        base: "#00632B",
+        dark: "#00401C",
+      },
+      indigo: colors.indigo,
+      purple: colors.violet,
+      pink: colors.pink,
+      
+      
+      // Neutral Colors
       neutral:{
-        white: "#FFFFFF",
         10: "#f6f8fc",
         20: "#f1f4f9",
         30: "#e2e8f0",
@@ -37,48 +71,7 @@ module.exports = {
         90: "#1e2a3b",
         100: "#0f1a2a",
       },
-      primary: {
-        light: "#0A30AD",
-        dark: "#011055",
-      },
-      secondary: {
-        20: "#FFFFFF",
-        40: "#DEDEDE",
-        60: "#282629",
-        80: "#000000",
-      },
-      success:{
-        40: "#419E6A",
-        60: "#00632B",
-        80: "#00401C",
-      },
-      info:{
-        40: "#4D82F3",
-        60: "#2563EB",
-        80: "#0037B3",
-      },
-      warning:{
-        40: "#EFB008",
-        60: "#976400",
-        80: "#724B00",
-      },
-      error:{
-        40: "#D83232",
-        60: "#B01212",
-        80: "#8C0000",
-      },
-      fontWeight: {
-        regular: '400',
-        medium: '500',
-        semibold: '600',
-        bold: '700',
-      },
-      // red: colors.red,
-      // green: colors.emerald,
-      // blue: colors.blue,
-      indigo: colors.indigo,
-      purple: colors.violet,
-      pink: colors.pink,
+      
     },
     fontSize: {
       xs: [
@@ -100,11 +93,23 @@ module.exports = {
         '2.4rem', { lineHeight: '3.6rem' }
       ],
       '3xl': [
-        '3.2rem', { lineHeight: '4rem' }
+        '2.6rem', { lineHeight: '3.6rem' } //Cambiar cuando vea algún texto con 26px
       ],
       '4xl': [
+        '3.2rem', { lineHeight: '4rem' }
+      ],
+      '5xl': [
         '4.2rem', { lineHeight: '5.8rem' }
       ],
+    },
+    fontFamily: {
+      poppins: ['Inter', 'sans-serif']
+    },
+    fontWeight: {
+      regular: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
     },
     fill: (theme) => theme('colors'),
     extend: {},
