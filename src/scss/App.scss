@@ -1,6 +1,13 @@
 @import "./lib/reset";
 @import "./lib/mixins";
 
+// pages
+@import "../styles/index";
+@import "../styles/notFound";
+@import "../styles/signIn";
+
+// --- Components --- //
+
 // widgets
 @import "../components/widgets/_styles/Header";
 @import "../components/widgets/_styles/Footer";
@@ -11,6 +18,7 @@
 @import "../components/widgets/form/_styles/Button";
 
 // pages
-@import "../styles/index";
-@import "../styles/notFound";
-@import "../styles/signIn";
+@import "../components/pages/_styles/LogIn";
+
+// templates
+@import "../components/templates/_styles/SIPI_Info";

@@ -1,0 +1,37 @@
+.LogIn{
+  z-index: 1;
+  position: relative;
+  padding: 37px 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  
+  @apply bg-white;
+  
+  h2{
+    @apply text-3xl xx_sm:text-4xl font-bold;
+    padding-bottom: 40px;
+  }
+  
+  section{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  a{
+    justify-self: center;
+  }
+  
+  @screen md{
+    min-width: 375px;
+    border-radius: 20px;
+    justify-self: center;
+    align-self: center;
+    
+    @apply md:shadow-2xl;
+  }
+  
+  @screen lg{
+    min-width: 400px;
+  }
+}

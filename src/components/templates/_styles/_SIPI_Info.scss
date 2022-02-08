@@ -1,0 +1,54 @@
+.SIPI_Info{
+  @apply bg-primary md:bg-white;
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  @screen md{
+    height: 100vh;
+    grid-template-columns: minmax(100px, 400px) 1fr;
+    
+    &.with-background{
+      background-image: url(https://i.imgur.com/hMPsm89.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  
+  aside{
+    @apply bg-primary text-white;
+    
+    position: relative;
+    padding: 30px;
+    padding-bottom: 47px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 30px;
+    
+    h1{
+      @apply text-lg xx_sm:text-2xl font-bold;
+    }
+    
+    p{
+      @apply text-xs xx_sm:text-base font-light;
+      
+      span{
+        @apply font-semibold underline underline-offset-1;
+      }
+    }
+    
+    @screen md{
+      border-radius: 0 20px 20px 0;
+    }
+  }
+  
+  & > section{
+    padding: 0;
+    display: grid;
+    
+    @screen sm{
+      padding: 0 20px;
+    }
+  }
+}
