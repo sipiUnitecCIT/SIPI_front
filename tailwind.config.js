@@ -111,6 +111,7 @@ module.exports = {
       medium: '500',
       semibold: '600',
       bold: '700',
+      superbold: '800',
     },
     fill: (theme) => theme('colors'),
     extend: {},

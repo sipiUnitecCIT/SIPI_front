@@ -31,7 +31,7 @@ const LogIn = ({userName, password, handleChange}) => {
         <Button type="submit">
           Ingresar
         </Button>
-        <Anchor className="font-semibold text-sm text-neutral-60" href="/">
+        <Anchor href="/">
           Recuperar Contraseña
         </Anchor>
       </section>

@@ -11,12 +11,12 @@ html{
     // text-transform: uppercase;
   }
   
-  input{
+  input, select{
     outline: none;
     background-color: transparent;
   }
 }
 
-body{
+html, body{
   @apply bg-white;
 }

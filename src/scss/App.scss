@@ -1,10 +1,12 @@
 @import "./lib/reset";
 @import "./lib/mixins";
+@import "./lib/classes";
 
 // pages
 @import "../styles/index";
 @import "../styles/notFound";
 @import "../styles/signIn";
+@import "../styles/WelcomeToSIPI";
 
 // --- Components --- //
 
@@ -15,6 +17,7 @@
 
 @import "../components/widgets/form/_styles/InputForm";
 @import "../components/widgets/form/_styles/InputCheck";
+@import "../components/widgets/form/_styles/SelectForm";
 @import "../components/widgets/form/_styles/Button";
 
 // pages

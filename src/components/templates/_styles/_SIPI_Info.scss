@@ -1,19 +1,7 @@
 .SIPI_Info{
-  @apply bg-primary md:bg-white;
+  @apply bg-primary;
   display: grid;
   grid-template-columns: 1fr;
-  
-  @screen md{
-    height: 100vh;
-    grid-template-columns: minmax(100px, 400px) 1fr;
-    
-    &.with-background{
-      background-image: url(https://i.imgur.com/hMPsm89.jpg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  }
   
   aside{
     @apply bg-primary text-white;
@@ -38,17 +26,43 @@
       }
     }
     
-    @screen md{
+    @screen lg{
       border-radius: 0 20px 20px 0;
     }
   }
   
-  & > section{
+  & > div{
     padding: 0;
     display: grid;
     
     @screen sm{
       padding: 0 20px;
     }
+  }
+  
+  &.with-background{
+    @screen md{
+      @apply bg-white;
+      
+      background-image: url(https://i.imgur.com/hMPsm89.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+      height: 100vh;
+      grid-template-columns: minmax(100px, 400px) 1fr;
+      
+      aside{
+        @screen md{
+          border-radius: 0 20px 20px 0;
+        }
+      }
+    }
+  }
+  
+  @screen lg{
+    @apply bg-white;
+    height: 100vh;
+    grid-template-columns: minmax(100px, 400px) 1fr;
   }
 }

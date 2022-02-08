@@ -1,15 +1,29 @@
-import React from 'react'
-import Header from '@widgets/Header'
-import Footer from '@widgets/Footer'
+import LogIn from '@components/LogIn';
+import SIPI_Info from '@templates/SIPI_Info';
+import React, { useState } from 'react'
 
-const Home = () => {
+const SignIn = () => {
+
+  const [state, setState] = useState({
+    userName: "",
+    password: ""
+  });
+
+  const handleChange = ({ target }) => {
+    setState({
+      ...state,
+      [target.name]: target.value
+    })
+  }
+
   return (
-    <div className="Home">
-      <Header/>
-      <main>
-      </main>
-    </div>
+    <SIPI_Info background>
+      <LogIn
+        {...state}
+        handleChange={handleChange}
+      />
+    </SIPI_Info>
   )
 }
 
-export default Home
+export default SignIn;

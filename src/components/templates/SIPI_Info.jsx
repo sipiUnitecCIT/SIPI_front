@@ -8,9 +8,9 @@ const SIPI_Info = ({background, children}) => {
         <p>Aquí encontrarás todo lo relacionado con <span>Proyectos Institucionales.</span></p>
         <p>Es el canal de comunicación entre Proyectos Institucionales y la Universidad Tecnológica del Centro (UNITEC)</p>
       </aside>
-      <section>
+      <div>
         {children}
-      </section>
+      </div>
     </main>
   );
 };

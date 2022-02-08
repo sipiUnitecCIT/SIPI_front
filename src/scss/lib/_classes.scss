@@ -1,0 +1,11 @@
+.MainTitle{
+  @apply text-3xl xx_sm:text-4xl font-bold;
+}
+
+.Subtitle{
+  @apply text-lg sm:text-xl md:text-2xl font-bold;
+}
+
+.parragraph{
+  @apply text-sm font-regular; 
+}

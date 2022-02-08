@@ -20,6 +20,7 @@
   
   a{
     justify-self: center;
+    @apply font-semibold text-sm text-neutral-60;
   }
   
   @screen md{
