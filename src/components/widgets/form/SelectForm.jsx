@@ -1,14 +1,19 @@
 import React from 'react';
 
-const SelectForm = ({ title, titleStyle, options, name }) => {
+const SelectForm = ({ title, titleStyle="Subtitle", options, name, defaultOption }) => {
+  
+  const selectsOptions = [...options]
+  
+  selectsOptions.unshift({name: defaultOption, value: ""})
+  
   return (
     <label htmlFor={name} className="SelectForm">
       <span className={titleStyle}>
         {title}
       </span>
       <select name={name} id={name}>
-        {options.map(({name, value}) =>
-          <option value={value} key={name}>
+        {selectsOptions.map(({name, value}, i) =>
+          <option value={value} key={`name-${i}`}>
             {name}
           </option>
         )}

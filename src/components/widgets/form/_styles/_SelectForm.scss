@@ -2,19 +2,24 @@
   padding-top: 40px;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 17px;
   
   @apply text-sm;
   
-  select{
+  select, input{
     padding: 5px 10px;
     position: relative;
     justify-self: start;
     border-bottom: 1px solid;
     @apply text-sm text-neutral-60 bg-white border-light_grey;
     
-    &:hover,
-    &:active{
+    &:focus{
+      border-bottom: 2px solid;
       @apply border-primary;
+    }
+    
+    &:hover{
+      @apply shadow-2xl shadow-neutral-100;
     }
   }
 }

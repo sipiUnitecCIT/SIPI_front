@@ -1,5 +1,5 @@
 import React from 'react';
-import InputForm from '@widgets/form/InputForm';
+import InputLogIn from '@widgets/form/InputLogIn';
 import InputCheck from '@widgets/form/InputCheck';
 import Button from '@widgets/form/Button';
 import Anchor from '@widgets/Anchor';
@@ -9,7 +9,7 @@ const LogIn = ({userName, password, handleChange}) => {
     <form className='LogIn'>
       <h2>Iniciar Sesión</h2>
       <section>
-        <InputForm
+        <InputLogIn
           type="email"
           title="Usuario ID"
           id="userName"
@@ -17,7 +17,7 @@ const LogIn = ({userName, password, handleChange}) => {
           value={userName}
           required
         />
-        <InputForm
+        <InputLogIn
           type="password"
           title="Contraseña"
           id="password"
