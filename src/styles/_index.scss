@@ -1,18 +1,5 @@
 .Home{
-  @apply bg-neutral-30;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  
-  @screen sm{
-    grid-template-columns: 80px 1fr;
-  }
-  
-  &__main{
-    @apply p-10;
-    width: 100%;
-    justify-self: center;
-  }
+  @include layout;
   
   section{
     @apply pb-28;

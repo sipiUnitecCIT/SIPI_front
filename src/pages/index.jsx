@@ -19,49 +19,42 @@ const Home = () => {
       name: "Vida Unitec",
       image: "https://i.imgur.com/pR0lFtQ.png",
       cover: "https://i.imgur.com/ul2JeBi.png",
-      linkName: "VU",
+      linkName: "VidaUnitec",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
     {
       name: "Calidad y Productividad",
       image: defaulIconImage,
       cover: "https://i.imgur.com/WAMmFeR.png",
-      linkName: "CIT",
+      linkName: "Calidad-Productividad",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
     {
       name: "ECO-UNITEC",
       image: defaulIconImage,
       cover: "https://i.imgur.com/K9j8S1W.png",
-      linkName: "VU",
+      linkName: "ECO-UNITEC",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
     {
       name: "Emprende Unitec",
       image: defaulIconImage,
       cover: "https://i.imgur.com/Je3pWC2.png",
-      linkName: "CIT",
+      linkName: "Emprende-Unitec",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
     {
       name: "Innovart",
       image: defaulIconImage,
       cover: "https://i.imgur.com/8jgRBre.png",
-      linkName: "VU",
+      linkName: "Innovart",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
     {
       name: "Soluciones Empresariales",
       image: defaulIconImage,
       cover: "https://i.imgur.com/koFfDVI.png",
-      linkName: "CIT",
-      description: "Este es un equipo muy importante en la universidad, es de tecnología"
-    },
-    {
-      name: "Vida Unitec",
-      image: defaulIconImage,
-      cover: "https://i.imgur.com/ul2JeBi.png",
-      linkName: "VU",
+      linkName: "Soluciones-Empresariales",
       description: "Este es un equipo muy importante en la universidad, es de tecnología"
     },
   ]
