@@ -1,0 +1,23 @@
+.SideBar{
+  position: relative;
+  width: 80px;
+  
+  nav{
+    position: fixed;
+    width: 80px;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: .3s;
+    z-index: 10;
+    
+    @screen sm{
+      transform: translateX(0%);
+    }
+    
+    padding: 15px 20px;
+    @apply bg-white;
+    
+    height: 100vh;
+  }
+}

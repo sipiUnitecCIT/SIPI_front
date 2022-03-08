@@ -1,10 +1,47 @@
 .Home{
-  // display: grid;
-  // grid-auto-flow: column;
-  // grid-template-rows: auto 1fr auto;
+  @apply bg-neutral-30;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
   
-  main{
-    // @include image-cover-css("../assets/images/home-background.jpg")
-    // @include image-cover-css("https://i.imgur.com/J60SiM8.jpg")
+  @screen sm{
+    grid-template-columns: 80px 1fr;
+  }
+  
+  &__main{
+    @apply p-10;
+    width: 100%;
+    justify-self: center;
+  }
+  
+  section{
+    @apply pb-28;
+    h2{
+      @apply text-xl font-bold;
+      padding-left: 10px;
+      padding-bottom: 20px;
+    }
+  }
+  
+  &__teams-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    justify-content: center;
+    gap: 20px 15px;
+  }
+  
+  &__news{
+    display: grid;
+  }
+  
+  &__news-list{
+    @apply pb-4;
+    overflow-x: scroll;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 220px;
+    gap: 20px 15px;
+    
+    @include scrollbar;
   }
 }

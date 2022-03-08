@@ -1,0 +1,48 @@
+.TeamCard{
+  @apply bg-white;
+  @include overlay("TeamCard");
+  
+  position: relative;
+  min-height: 170px;
+  border-radius: 10px;
+  overflow: hidden;
+  
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  
+  &__cover{
+    @apply bg-neutral-50;
+    position: relative;
+    
+    img{
+      @include image-cover-html;
+    }
+  }
+  
+  &__image{
+    background-color: white;
+    $profile-team-image-size: 72px;
+    position: absolute;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 50%;
+    
+    min-width: $profile-team-image-size;
+    min-height: $profile-team-image-size;
+    max-width: $profile-team-image-size;
+    max-height: $profile-team-image-size;
+    
+    top: calc(50% - $profile-team-image-size / 2);
+    left: 15px;
+    
+    img{
+      @include image-cover-html;
+    }
+  }
+  
+  &__name{
+    padding: 20px;
+    align-self: flex-end;
+    @apply text-base font-bold;
+  }
+}

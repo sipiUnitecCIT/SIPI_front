@@ -1,6 +1,7 @@
 @import "./lib/reset";
 @import "./lib/mixins";
 @import "./lib/classes";
+@import "./lib/ripples";
 
 // pages
 @import "../styles/index";
@@ -14,6 +15,7 @@
 @import "../components/widgets/_styles/Header";
 @import "../components/widgets/_styles/Footer";
 @import "../components/widgets/_styles/NotFoundSearches";
+@import "../components/widgets/_styles/SideBar";
 
 @import "../components/widgets/form/_styles/InputLogIn";
 @import "../components/widgets/form/_styles/InputCheck";
@@ -22,6 +24,8 @@
 
 // pages
 @import "../components/pages/_styles/LogIn";
+@import "../components/pages/_styles/TeamCard";
+@import "../components/pages/_styles/NewsCard";
 
 // templates
 @import "../components/templates/_styles/SIPI_Info";
