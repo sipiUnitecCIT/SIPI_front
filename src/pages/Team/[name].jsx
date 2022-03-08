@@ -83,7 +83,7 @@ const Team = () => {
         >
           {"< Volver"}
         </button>
-        <h1>Miembros del Equipo "{name}"</h1>
+        <h1>Miembros del Equipo &quot;{name}&quot;</h1>
         <section className="Team__members">
           <TeamMembers
             members={users}
