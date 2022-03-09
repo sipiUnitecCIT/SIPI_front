@@ -7,7 +7,7 @@ const FeedActivities = ({ feed }) => {
       <div className="FeedActivities__items">
         {
           feed.map(({ commentary, time, user }, i) =>
-            <article className="Feed">
+            <article className="Feed" key={i}>
               <div className="">
 
               </div>
