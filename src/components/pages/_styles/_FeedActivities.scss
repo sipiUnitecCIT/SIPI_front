@@ -1,0 +1,52 @@
+.FeedActivities{
+  @apply bg-white p-8;
+  border-radius: 10px;
+  
+  &__title{
+    @apply text-lg font-semibold pb-4;
+    @apply border-b border-light_grey;
+  }
+  
+  &__items{
+    @include scrollbar(7px);
+    @apply bg-white mt-4;
+    overflow-y: auto;
+    max-height: 500px;
+  }
+  
+  .Feed{
+    @apply pt-8 pr-4;
+    
+    &__user{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    &__user-image{
+      width: 30px;
+    }
+    
+    &__title{
+      @apply text-sm text-secondary font-semibold;
+      
+      &--name{
+        @apply text-black font-semibold; 
+      }
+    }
+    
+    &__time{
+      @apply text-xs text-light_grey pb-2 block;
+    }
+    
+    &__description{
+      @apply pl-16;
+      
+      p{
+        @apply text-xs font-regular;
+      }
+    }
+    
+  }
+}

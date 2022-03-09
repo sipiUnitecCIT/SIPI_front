@@ -1,6 +1,7 @@
 import Bell from '@icons/Bell'
 import React from 'react'
 import { useState } from 'react'
+import Anchor from './Anchor'
 
 const LogInBar = () => {
 
@@ -42,11 +43,25 @@ const LogInBar = () => {
               </span>
             </div>
             <ul className="userMenu__options">
-              <li>Perfil de SIPI</li>
-              <li>Ajustes</li>
-              <li>Ayuda</li>
+              <li>
+                <Anchor href="/user">
+                  Perfil de SIPI
+                </Anchor>
+              </li>
+              <li>
+                <Anchor href="/">
+                  Ajustes
+                </Anchor>
+              </li>
+              <li>
+                <Anchor href="/">
+                  Ayuda
+                </Anchor>
+              </li>
             </ul>
-            <button>Cerrar Sesión</button>
+            <Anchor className="userMenu__logOut-button" href="/signIn">
+              Cerrar Sesión
+            </Anchor>
           </div>
         }
 

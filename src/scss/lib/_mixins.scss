@@ -114,12 +114,17 @@
     }
     
     &__main{
-      @apply p-10;
+      @apply px-6 x_sm:px-10 p-10;
       width: 100%;
       justify-self: center;
       max-width: 1440px;
     }
   }
+}
+
+
+@mixin  userImage {
+  border-radius: 50%;
 }
 // @mixin 
 

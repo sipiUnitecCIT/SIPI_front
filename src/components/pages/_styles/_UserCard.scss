@@ -1,0 +1,88 @@
+.UserCard{
+  
+  @apply bg-white px-6 py-4;
+  border-radius: 10px;
+  width: 100%;
+  
+  display: grid;
+  
+  @screen sm{
+    @apply pr-0;
+    grid-template-columns: 200px 1fr;
+  }
+  
+  @screen md{
+    min-width: 500px;
+  }
+  
+  @media screen and (min-width: 850px){
+    // grid-template-columns: 200px 1fr;
+  }
+  
+  &__name{
+    @apply py-8 border-b border-light_grey;
+    
+    display: grid;
+    justify-content: center;
+    align-content: flex-start;
+    justify-items: center;
+    
+    img{
+      width: 90px;
+    }
+    h3{
+      @apply text-lg font-medium pt-2;
+    }
+    span{
+      @apply text-xs text-info-light font-semibold;
+    }
+    
+    @screen sm{
+      @apply border-r border-b-0;
+    }
+  }
+  
+  &__info{
+    @apply px-4 sm:px-16 py-8;
+    
+    h2{
+      @apply text-lg font-bold pb-5;
+    }
+    
+    section{
+      display: grid;
+      gap: 20px;
+      
+      @media screen and (min-width: 850px){
+        gap: 30px;
+      }
+    }
+    
+    section div{
+      display: grid;
+      justify-content: start;
+      gap: 20px;
+      
+      @media screen and (min-width: 850px){
+        grid-template-columns: repeat(2, minmax(200px, auto));
+        gap: 35px;
+      }
+    }
+  }
+  
+  &__feature{
+    display: grid;
+    gap: 5px;
+    
+    span:first-child{
+      @apply text-xs text-light_grey font-regular;
+    }
+    span:nth-child(2){
+      @apply text-sm font-bold;
+    }
+    span:nth-child(3){
+      @apply text-xs text-success-light font-semibold;
+    }
+  }
+  
+}

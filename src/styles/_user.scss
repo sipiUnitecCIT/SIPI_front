@@ -1,0 +1,14 @@
+.User{
+  @include layout;
+  
+  &__layout{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 30px;
+    
+    @screen xl{
+      grid-template-columns: auto 1fr;
+    }
+  }
+}

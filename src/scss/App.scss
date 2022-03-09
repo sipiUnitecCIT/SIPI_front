@@ -6,6 +6,7 @@
 // pages
 @import "../styles/index";
 @import "../styles/signIn";
+@import "../styles/user";
 @import "../styles/WelcomeToSIPI";
 @import "../styles/team";
 @import "../styles/notFound";
@@ -28,6 +29,8 @@
 @import "../components/pages/_styles/LogIn";
 @import "../components/pages/_styles/TeamCard";
 @import "../components/pages/_styles/NewsCard";
+@import "../components/pages/_styles/UserCard";
+@import "../components/pages/_styles/FeedActivities";
 
 // templates
 @import "../components/templates/_styles/SIPI_Info";
