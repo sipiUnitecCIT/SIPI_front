@@ -107,10 +107,9 @@
   &{
     @apply bg-neutral-30;
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
     
     @screen sm{
+      display: grid;
       grid-template-columns: 80px 1fr;
     }
     

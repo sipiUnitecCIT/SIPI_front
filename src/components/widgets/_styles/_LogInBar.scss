@@ -1,0 +1,90 @@
+.LogInBar{
+  @apply pb-6;
+  
+  display: grid;
+  justify-content: end;
+  
+  &__bar{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  nav{
+    position: relative;
+  }
+  
+  &__notifications{
+    // @include overlay("LogInBar__notifications");
+  }
+  
+  &__user{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+    
+    .user{
+      @apply text-xs font-semibold;
+      
+      &__greeting{
+        @apply text-neutral-60;
+      }
+      &__name{
+        
+      }
+    }
+  }
+  
+  .userMenu{
+    @apply pt-4 bg-white;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 100%;
+    min-width: 270px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    
+    &__user{
+      @apply pb-5 px-4;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    &__image{
+      width: 70px;
+    }
+    
+    &__info{
+      @apply text-base font-semibold;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    
+    &__email{
+      @apply text-xs font-regular text-neutral-60;
+    }
+    
+    &__options{
+      @apply py-4 border-y border-light_grey;
+      li{
+        @apply py-2 px-6 text-xs font-semibold text-neutral-60 hover:bg-medium;
+      }
+    }
+    
+    & > button{
+      @apply p-6 text-xs font-semibold text-error-light hover:bg-medium;
+      width: 100%;
+      text-align: start;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+  
+}

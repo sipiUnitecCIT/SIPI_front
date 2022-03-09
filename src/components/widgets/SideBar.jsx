@@ -3,12 +3,12 @@ import React from 'react'
 
 const SideBar = () => {
   return (
-    <header className="SideBar">
+    <aside className="SideBar">
       <nav>
         <Unitec size="37"/>
       </nav>
-    </header>
+    </aside>
   )
 }
 
-export default SideBar
+export default SideBar;

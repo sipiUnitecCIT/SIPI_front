@@ -9,6 +9,7 @@
   
   display: grid;
   grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
   
   &__cover{
     @apply bg-neutral-50;
@@ -41,8 +42,14 @@
   }
   
   &__name{
+    margin-top: 20px;
     padding: 20px;
     align-self: flex-end;
     @apply text-base font-bold;
+    
+    @screen xx_sm{
+      margin-top: 0;
+    }
   }
+  
 }

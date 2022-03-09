@@ -1,5 +1,6 @@
 import NewsCard from '@components/NewsCard';
 import TeamCard from '@components/TeamCard';
+import LogInBar from '@widgets/LogInBar';
 import SideBar from '@widgets/SideBar';
 import React, { useState } from 'react'
 
@@ -63,6 +64,8 @@ const Home = () => {
     <main className="Home">
       <SideBar />
       <div className="Home__main">
+        
+        <LogInBar/>
         
         <section className="Home__teams">
           <h2>Equipos de Proyectos</h2>

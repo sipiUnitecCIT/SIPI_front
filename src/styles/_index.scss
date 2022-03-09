@@ -5,16 +5,26 @@
     @apply pb-28;
     h2{
       @apply text-xl font-bold;
-      padding-left: 10px;
       padding-bottom: 20px;
+      
+      @screen sm{
+        padding-left: 10px;
+      }
     }
   }
   
   &__teams-list{
+    
+   
+    
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     justify-content: center;
     gap: 20px 15px;
+    
+    @screen sm{
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
   }
   
   &__news{
