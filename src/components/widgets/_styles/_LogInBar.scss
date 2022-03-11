@@ -30,7 +30,7 @@
       @apply text-xs font-semibold;
       
       &__greeting{
-        @apply text-neutral-60;
+        @apply hidden md:inline text-neutral-60;
       }
       &__name{
         

@@ -108,7 +108,7 @@
     @apply bg-neutral-30;
     min-height: 100vh;
     
-    @screen sm{
+    @screen md{
       display: grid;
       grid-template-columns: 80px 1fr;
     }
@@ -125,6 +125,11 @@
 
 @mixin  userImage {
   border-radius: 50%;
+}
+
+@mixin badge {
+  @apply py-4 px-6;
+  border-radius: 4px;
 }
 // @mixin 
 

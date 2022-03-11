@@ -12,7 +12,7 @@
     transition: .3s;
     z-index: 10;
     
-    @screen sm{
+    @screen md{
       transform: translateX(0%);
     }
     

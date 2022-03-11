@@ -1,0 +1,50 @@
+.CalendarEvents{
+  .Event{
+    @apply p-4 text-base md:text-xl font-medium;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+    align-items: center;
+    gap: 10px;
+    
+    @screen md{
+      gap: 35px;
+      grid-template-columns: auto 1fr auto;
+    }
+    
+    &:nth-child(2n){
+      @apply bg-white;
+    }
+    
+    &__date{
+      span:first-child{
+        @apply font-bold;
+      }
+    }
+    &__info{
+      display: grid;
+      justify-items: flex-start;  
+      align-items: center;  
+      grid-template-columns: auto 1fr;
+      gap: 15px;
+      
+      @screen md{
+        gap: 35px;
+      }
+    }
+    &__owner{
+      span{
+        @apply py-2 px-4 block text-xs text-white bg-secondary;
+        border-radius: 4px;
+        
+        @screen md{
+          // @include badge;
+          @apply py-2 px-5;
+        }
+      }
+    }
+    &__btn{
+      @apply text-base md:text-lg font-medium text-secondary;
+    }
+  }
+}

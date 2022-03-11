@@ -23,7 +23,6 @@
     @apply py-8 border-b border-light_grey;
     
     display: grid;
-    justify-content: center;
     align-content: flex-start;
     justify-items: center;
     
@@ -84,5 +83,4 @@
       @apply text-xs text-success-light font-semibold;
     }
   }
-  
 }

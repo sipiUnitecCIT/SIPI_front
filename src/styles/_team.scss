@@ -40,7 +40,7 @@
     
     //Todas las celdas
     th{
-      @apply p-8 text-base sm:text-lg font-semibold;
+      @apply p-4 md:p-8  text-base sm:text-lg font-semibold;
       display: grid;
       justify-items: start;
       align-items: center;

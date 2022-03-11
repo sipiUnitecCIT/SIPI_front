@@ -1,3 +1,4 @@
+import CalendarEvents from '@components/CalendarEvents';
 import NewsCard from '@components/NewsCard';
 import TeamCard from '@components/TeamCard';
 import LogInBar from '@widgets/LogInBar';
@@ -7,7 +8,7 @@ import React, { useState } from 'react'
 const Home = () => {
 
   const defaulIconImage = "https://www.diktat-italia.com/wp-content/uploads/2018/02/brand-icon.png"
-  
+
   const teams = [
     {
       name: "Centro de Innovación Tecnológica",
@@ -60,13 +61,58 @@ const Home = () => {
     },
   ]
 
+  const events = [
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+    {
+      date: "Marzo 12",
+      time: "23:50",
+      name: "Fecha límite para las inscripciones",
+      owner: "UNITEC"
+    },
+  ]
+
   return (
     <main className="Home">
       <SideBar />
       <div className="Home__main">
-        
-        <LogInBar/>
-        
+
+        <LogInBar />
+
         <section className="Home__teams">
           <h2>Equipos de Proyectos</h2>
           <div className="Home__teams-list">
@@ -77,7 +123,7 @@ const Home = () => {
             }
           </div>
         </section>
-        
+
         <section className="Home__news">
           <h2>Noticias</h2>
           <div className="Home__news-list">
@@ -88,7 +134,12 @@ const Home = () => {
             }
           </div>
         </section>
-            
+
+        <section className="Home__calendar">
+          <h2>Eventos de Proyectos</h2>
+          <CalendarEvents events={events}/>
+        </section>
+
       </div>
     </main>
   )
