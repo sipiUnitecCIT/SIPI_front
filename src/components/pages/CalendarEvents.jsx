@@ -5,7 +5,7 @@ const CalendarEvents = ({ events = [] }) => {
     <div className="CalendarEvents">
       {
         events.map(({ date, time, name, owner }, i) =>
-          <div className="Event">
+          <div className="Event" key={i}>
             <div className="Event__date">
               <span>{date} - </span>
               <span>{time}</span>
@@ -28,4 +28,4 @@ const CalendarEvents = ({ events = [] }) => {
   )
 }
 
-export default CalendarEvents
+export default CalendarEvents;

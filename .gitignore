@@ -3,3 +3,5 @@ node_modules
 dist
 src/assets/images
 tailwind.js
+.env.local
+.env

@@ -106,6 +106,9 @@ const Home = () => {
     },
   ]
 
+  const [hiddenMessage, setHiddenMessage] = useState(process.env.NEXT_PUBLIC_persona)
+  const [hidden, setHidden] = useState(true)
+  
   return (
     <main className="Home">
       <SideBar />
@@ -137,9 +140,12 @@ const Home = () => {
 
         <section className="Home__calendar">
           <h2>Eventos de Proyectos</h2>
-          <CalendarEvents events={events}/>
+          <CalendarEvents events={events} />
         </section>
 
+        <button onClick={()=> setHidden(false)} className="p-4 bg-medium rounded-md">
+          <span>{hidden ? "Mensaje Oculto :v" : `Creador: ${hiddenMessage}`}</span>
+        </button>
       </div>
     </main>
   )
