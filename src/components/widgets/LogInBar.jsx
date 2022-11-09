@@ -17,6 +17,7 @@ const LogInBar = () => {
     <header className="LogInBar">
       <nav>
         <div className="LogInBar__bar" onClick={() => setShowNews(!showNews)}>
+          
           <div className="LogInBar__notifications">
             <Bell size={20} />
           </div>
@@ -30,11 +31,13 @@ const LogInBar = () => {
             </span>
             <img width={30} src={user.image} alt={`${user.name}-profile_image`} />
           </div>
+          
         </div>
 
         {
           showNews &&
           <div className="userMenu">
+
             <div className="userMenu__user">
               <img className="userMenu__image" src={user.image} alt={`${user.name}-profile_image`} />
               <span className="userMenu__info">
@@ -42,6 +45,7 @@ const LogInBar = () => {
                 <span className="userMenu__email">{user.email}</span>
               </span>
             </div>
+
             <ul className="userMenu__options">
               <li>
                 <Anchor href="/user">
@@ -59,6 +63,7 @@ const LogInBar = () => {
                 </Anchor>
               </li>
             </ul>
+
             <Anchor className="userMenu__logOut-button" href="/signIn">
               Cerrar Sesión
             </Anchor>

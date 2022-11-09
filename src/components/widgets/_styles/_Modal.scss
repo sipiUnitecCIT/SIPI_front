@@ -1,0 +1,57 @@
+.Modal{
+  @apply p-6;
+  @include mask;
+  z-index: 50;
+  position: fixed;
+  
+  
+  display: grid;
+  grid-template-columns: minmax(320px, 913px);
+  justify-content: center;
+  
+  &_container{
+    @apply rounded-2xl bg-white;
+    min-height: 450px;
+    max-height: 700px;
+    
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    
+    overflow: hidden;
+    
+    .close_btn{
+      @apply bg-white rounded-full p-2;
+      position: absolute;
+      top: 12.5px;
+      right: 12.5px;
+    }
+    
+    header{
+      @apply text-white rounded-t-2xl px-10 pt-10 pb-5;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 180px;
+      background-position: center;      
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+      .Author{
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        
+        @screen xx_sm{
+          grid-template-columns: repeat(4, auto);
+        }
+      }
+    }
+    section{
+      @apply p-6;
+      overflow: auto;
+    }
+  }
+}
