@@ -1,11 +1,19 @@
-.MainTitle{
+@mixin MainTitle{
   @apply text-3xl xx_sm:text-4xl font-bold;
 }
-
-.Subtitle{
+@mixin Subtitle{
   @apply text-lg sm:text-xl md:text-2xl font-bold;
 }
-
-.parragraph{
+@mixin parragraph{
   @apply text-sm font-regular; 
+}
+
+.MainTitle{
+  @include MainTitle;
+}
+.Subtitle{
+  @include Subtitle;
+}
+.parragraph{
+  @include parragraph 
 }

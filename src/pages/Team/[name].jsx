@@ -77,19 +77,17 @@ const Team = () => {
     <main className="Team">
       <SideBar />
       <div className="Team__main">
-        <button
-          onClick={back}
-          className="text-sm font-semibold pb-8 pt-4"
-        >
+        
+        <button onClick={back} className="text-sm font-semibold pb-8 pt-4">
           {"< Volver"}
         </button>
+        
         <h1>Miembros del Equipo &quot;{name}&quot;</h1>
+        
         <section className="Team__members">
-          <TeamMembers
-            members={users}
-            className="Team__table"
-          />
+          <TeamMembers members={users} className="Team__table" />
         </section>
+        
       </div>
     </main>
   )
