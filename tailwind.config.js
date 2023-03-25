@@ -23,10 +23,11 @@ module.exports = {
       
       // Primary Colors
       primary: "#011055",
-      black: "#141414",
       
       // Secondary Colors
       secondary: "#0A30AD",
+      
+      black: "#141414",
       dark_grey: "#222327",
       light_grey: "#9AA3AE",
       medium: "#DEDEDE",

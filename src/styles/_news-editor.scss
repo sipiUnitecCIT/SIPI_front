@@ -1,36 +1,65 @@
 .news-editor {
   @include layout;
-
+  
+  $border-radius: 15px;
+  
   &__main {
+    
+    .info-options{
+      display: grid;
+      grid-template-columns: 50% auto auto;
+      gap: 10px;
+    }
+    
+    // .InputForm{
+    //   @media screen and (min-width: 900px){
+    //     max-width: 50%;
+    //   }
+    // }
+    
     .editor {
       width: 100%;
-      // border: 1px solid #213547;
-      border-radius: 20px;
+      border-radius: $border-radius;
       overflow: hidden;
       background-color: #ffffff;
-
-      button {
-        border-radius: 8px;
-        border: 1px solid transparent;
-        padding: 0.6em 1.2em;
-        font-family: inherit;
-        cursor: pointer;
-        transition: border-color 0.25s;
-        
-        @apply text-sm font-bold;
-        
-        &:hover {
-          border-color: #646cff;
-        }
-
-        &:focus,
-        &:focus-visible {
-          outline: 4px auto -webkit-focus-ring-color;
+      
+      header{
+        button {
+          position: relative;
+          border-radius: $border-radius;
+          border: 1px solid transparent;
+          padding: 0.6em 1.2em;
+          font-family: inherit;
+          cursor: pointer;
+          transition: border-color 0.25s;
+          overflow: hidden;
+          
+          @apply text-sm font-bold;
+  
+          &:hover {
+            border-color: #646cff;
+          }
+  
+          &:focus,
+          &:focus-visible {
+            outline: 4px auto -webkit-focus-ring-color;
+          }
+          
+          &::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: transparent;
+          }
         }
       }
 
       .box {
         width: 100%;
+        height: 500px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-top: 1px solid #213547;
@@ -38,33 +67,77 @@
 
       textarea {
         border: none;
-        padding: 20px;
         color: white;
         height: 100%;
         background-color: #213547;
+        min-height: 350px;
+        resize: none;
+        overflow: auto;
+        outline: none;
 
-        @apply text-sm;
-      }
-
-      .post {
-        @include titles;
-        background-color: #ffffff;
-
-        p,
-        ul,
-        ol,
-        li {
-          @include parragraph;
-        }
-
-        p {
-          @apply pb-5;
-        }
-
-        img {
-          width: 100%;
-        }
+        @apply text-sm p-8;
+        @include scrollbar(10px, 0px);
       }
     }
+  }
+}
+
+.post {
+  @include titles;
+  @include scrollbar(10px, 0px);
+  
+  @apply p-8;
+  
+  overflow: auto;
+  background-color: #ffffff;
+  
+  a{
+    color: #0791e6;
+  }
+  
+  p,
+  ul,
+  ol,
+  li {
+    @include parragraph;
+  }
+
+  code {
+    @apply mb-5 mt-5 block;
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote{
+    @apply mb-5;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: initial;
+  }
+
+  ol,
+  ul {
+    padding-left: 20px;
+  }
+
+  blockquote{
+    padding: 10px 25px;
+    border-left: 5px solid;
+    font-style: italic;
+    @apply border-info-light;
+    
+    p{
+      margin: 0
+    }
+  }
+  
+  img {
+    width: 100%;
   }
 }

@@ -22,6 +22,8 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona una sede"
           title="¿En que sede estudias?"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
 
         <SelectForm
@@ -29,6 +31,8 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona tu Equipo"
           title="¿A que Equipo de Proyectos perteneces?"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
 
         <SelectForm
@@ -36,6 +40,8 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona el estado de tu AEG"
           title="¿Cuál es el estatus de tu Artículo Académico?"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
 
         <SelectForm
@@ -43,13 +49,17 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona el estado de tu pasantía"
           title="Cuál es el estatus de tu Pasantía?"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
 
         <InputForm
           type="date"
           title="Fecha de ingreso a la universidad"
           id="college_entrance_date"
-          handleChange={()=>{}}
+          titleStyle="Subtitle"
+          className="SelectForm"
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -58,8 +68,10 @@ const Index = () => {
           id="cohorte"
           type="number"
           title="Cohorte al que perteneces"
+          titleStyle="Subtitle"
+          className="SelectForm"
           placeholder="Ejemplo: 2017"
-          handleChange={()=>{}}
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -69,14 +81,18 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona una opción"
           title="Estatus del TEG / Metodología"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
         
         <InputForm
           id="names"
           type="number"
           title="Primer y segundo nombre"
+          titleStyle="Subtitle"
+          className="SelectForm"
           placeholder="Steve Manuel"
-          handleChange={()=>{}}
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -85,8 +101,10 @@ const Index = () => {
           type="number"
           title="Tus apellidos"
           id="lastNames"
+          titleStyle="Subtitle"
+          className="SelectForm"
           placeholder="Aquino Chávez"
-          handleChange={()=>{}}
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -95,8 +113,10 @@ const Index = () => {
           type="text"
           title="Cédula de identidad"
           id="CI"
+          titleStyle="Subtitle"
+          className="SelectForm"
           placeholder="V-12.258.963"
-          handleChange={()=>{}}
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -106,6 +126,8 @@ const Index = () => {
           options={options}
           defaultOption="Tipo de Sangre"
           title="Estatus del TEG / Metodología"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
         
         <SelectForm
@@ -113,6 +135,8 @@ const Index = () => {
           options={options}
           defaultOption="Selecciona tu ciudad de nacimiento"
           title="Ciudad de nacimiento"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
 
         <SelectForm
@@ -120,13 +144,17 @@ const Index = () => {
           options={options}
           defaultOption="Ciudad donde vives"
           title="Selecciona la ciudad donde vives actualmente?"
+          className="SelectForm"
+          titleStyle="Subtitle"
         />
         
         <InputForm
           type="date"
           id="birth_date"
           title="Fecha de nacimiento"
-          handleChange={()=>{}}
+          titleStyle="Subtitle"
+          className="SelectForm"
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
@@ -135,7 +163,9 @@ const Index = () => {
           type="date"
           title="Fecha de creación"
           id="creación_date"
-          handleChange={()=>{}}
+          titleStyle="Subtitle"
+          className="SelectForm"
+          onChange={()=>{}}
           // value={"userName"}
           // required
         />
