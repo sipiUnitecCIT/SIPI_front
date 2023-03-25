@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Icon(props){
-  
-  const {color, size, viewBox, className}  = props
-  
-  return(
+function Icon(props) {
+
+  const { color, size, viewBox, className } = props
+
+  return (
     <svg
       fill={color}
       width={size}
