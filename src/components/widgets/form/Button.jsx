@@ -1,20 +1,19 @@
+import Spinner from '@widgets/Spinner'
 import React from 'react'
 
 const Button = (props) => {
   
-  const { color, handleClick, ref, type = "button", children} = props
-  const { notLoading, loading, text} = props
+  const { color, loading, type = "button", children, rest} = props
   
   return (
     <button
       type={type}
-      ref={ref}
       disabled={loading}
-      onClick={handleClick}
-      className={`Button ${color}`}
+      className={`Button ${ !loading ? color : "!bg-light_grey"}`}
+      {...rest}
     >
       {
-        !loading ? children : "Cargando..."
+        !loading ? children : <Spinner text size="large" />
       }
     </button>
   )

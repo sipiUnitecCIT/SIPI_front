@@ -1,12 +1,12 @@
 import React from 'react'
 
 const InputForm = (props) => {
-  const { title, titleStyle="Subtitle", id, handleChange, handleBlur, handleFocus, ...rest} = props
+  const { title, titleStyle = "", className = "InputForm", id, required = true, ...rest } = props
 
   return (
     <label
       htmlFor={id}
-      className="SelectForm"
+      className={className}
     >
       <span className={titleStyle}>
         {title}
@@ -14,10 +14,7 @@ const InputForm = (props) => {
       <input
         id={id}
         name={id}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        onChange={handleChange}
-        
+        required={required}
         {...rest}
       />
     </label>
