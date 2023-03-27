@@ -19,8 +19,8 @@ const TeamMembers = ({ members }) => {
     <div className="table">
 
       <div className="table__fields">
-        {tableFields.map(field =>
-          <span>{field}</span>
+        {tableFields.map((field, i) =>
+          <span key={i}>{field}</span>
         )}
       </div>
 
