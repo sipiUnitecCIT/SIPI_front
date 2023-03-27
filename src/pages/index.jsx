@@ -2,16 +2,23 @@ import CalendarEvents from '@components/CalendarEvents';
 import NewsCard from '@components/NewsCard';
 import NewsSections from '@components/NewsSections';
 import TeamCard from '@components/TeamCard';
+import LoadingScreen from '@widgets/LoadingScreen';
 import LogInBar from '@widgets/LogInBar';
 import Modal from '@widgets/Modal';
 import SideBar from '@widgets/SideBar';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import useLoadingResources from 'src/hooks/useLoadingResources';
+import InfoService from 'src/services/info';
+import TeamsService from 'src/services/teams';
+
+const infoService = new InfoService()
+const teamsService = new TeamsService()
 
 const Home = () => {
 
   const defaulIconImage = "https://www.diktat-italia.com/wp-content/uploads/2018/02/brand-icon.png"
 
-  const teams = [
+  const teamsDEfa = [
     {
       name: "Centro de Innovación Tecnológica",
       image: "https://i.imgur.com/SES3rYJ.png",
@@ -167,40 +174,80 @@ const Home = () => {
     },
   ]
 
+  const [state, setState] = useState({
+    info: [],
+    teams: [],
+  })
+
+  const { resourcesState, showContent, setResources } = useLoadingResources()
+
   const [hiddenMessage, setHiddenMessage] = useState(process.env.NEXT_PUBLIC_persona)
   const [hidden, setHidden] = useState(true)
 
+  useEffect(() => {
+    (async () => {
+      try {
+
+        const info = await infoService.getAll()
+        console.log("info:", info)
+
+        const teams = await teamsService.getAll()
+        console.log("teams:", teams)
+
+        setState({ info, teams })
+        setResources({ loadingResources: false })
+
+      } catch (error) {
+        setResources({ loadingResources: false, errorResources: true })
+        console.log(error)
+      }
+    })()
+  }, [])
+
+  const { info, teams } = state
+  const { loadingResources, errorResources } = resourcesState
+
   return (
     <main className="Home">
-
       <SideBar />
+      {
+        showContent ?
+          <div className="Home__main">
 
-      <div className="Home__main">
+            <LogInBar />
 
-        <LogInBar />
+            <section className="Home__teams">
+              <h2>Equipos de Proyectos</h2>
+              <div className="Home__teams-list">
+                {
+                  teams.map((team) => (
+                    <TeamCard {...team} key={team.id_equipo} />
+                  ))
+                }
+              </div>
+            </section>
 
-        <section className="Home__teams">
-          <h2>Equipos de Proyectos</h2>
-          <div className="Home__teams-list">
+            <NewsSections info={info} />
+
             {
-              teams.map((team, i) => (
-                <TeamCard {...team} key={i} />
-              ))
+              // <section className="Home__calendar">
+              //   <h2>Eventos de Proyectos</h2>
+              //   <CalendarEvents events={events} />
+              // </section> 
             }
+
+            <button onClick={() => setHidden(false)} className="p-4 bg-medium rounded-md">
+              <span>{hidden ? "Mensaje Oculto :v" : `Creador: ${hiddenMessage}`}</span>
+            </button>
           </div>
-        </section>
-
-        <NewsSections news={news} />
-
-        <section className="Home__calendar">
-          <h2>Eventos de Proyectos</h2>
-          <CalendarEvents events={events} />
-        </section>
-
-        <button onClick={() => setHidden(false)} className="p-4 bg-medium rounded-md">
-          <span>{hidden ? "Mensaje Oculto :v" : `Creador: ${hiddenMessage}`}</span>
-        </button>
-      </div>
+          :
+          <LoadingScreen
+            fullscreen
+            spinnerSize="w-16 h-16"
+            loading={loadingResources}
+            error={errorResources}
+          />
+      }
     </main>
   )
 }

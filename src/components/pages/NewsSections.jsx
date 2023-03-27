@@ -2,16 +2,26 @@ import React, { useState } from 'react'
 import Modal from '@widgets/Modal'
 import NewsCard from './NewsCard'
 
-const NewsSections = ({ news }) => {
+const NewsSections = ({ info }) => {
 
   const [showModal, setShowModal] = useState(false)
-
+  
   const [selectedNew, setSelectedNew] = useState({
-    title: "",
-    cover: "",
-    description: "",
-    image: "",
-    linkName: "",
+
+    id_informacion: "",
+    informacion_idPublicador: "",
+
+    informacion_fechaPublicacion: "", //2023-03-01
+    informacion_fechaExpiracion: "",  //2023-03-01
+
+    id_equipo: 0,
+    id_informacionTipo: 0,
+    informacion_titulo: "",
+    informacion_cuerpo: "",
+
+    // cover: "",
+    // image: "",
+    // linkName: "",
   })
 
   return (
@@ -19,14 +29,14 @@ const NewsSections = ({ news }) => {
       <h2>Noticias</h2>
       <div className="Home__news-list">
         {
-          news.map((item, i) => (
+          info.map(item =>
             <NewsCard
-              key={i}
-              {...item}
+              key={item.id_informacion}
+              info={item}
               setShowModal={setShowModal}
               setSelectedNew={setSelectedNew}
             />
-          ))
+          )
         }
       </div>
       <Modal

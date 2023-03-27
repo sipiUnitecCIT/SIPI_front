@@ -7,7 +7,7 @@ const SideBar = () => {
     <aside className="SideBar">
       <nav>
         <Anchor href="/">
-          <Unitec size="37"/>
+          <Unitec size="40"/>
         </Anchor>
       </nav>
     </aside>
