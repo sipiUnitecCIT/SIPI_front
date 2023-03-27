@@ -1,0 +1,34 @@
+@mixin table($columns) {
+  //La cabecera y las filas
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+
+  // grid-auto-rows: minmax(0, 46px);
+
+  //Todas las celdas
+  span {
+    @apply p-4 text-sm;
+    align-self: center;
+  }
+
+  // El primero de cada fila
+  span:nth-of-type(#{$columns}n + 1) {
+    @apply pl-0;
+  }
+
+  //La cabecera
+  &__fields {
+    @apply border-b-2 border-solid border-light_grey;
+    grid-column-start: 1;
+    grid-column-end: ($columns + 1);
+
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+
+    span {
+      //Las celdas de la cabecera
+      @apply text-base text-light_grey font-semibold;
+      width: 100%;
+    }
+  }
+}

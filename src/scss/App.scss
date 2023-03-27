@@ -3,14 +3,16 @@
 @import "./lib/classes";
 @import "./lib/ripples";
 @import "./lib/titles";
+@import "./lib/table";
 
 // pages
 @import "../styles/index";
 @import "../styles/signIn";
 @import "../styles/user";
 @import "../styles/WelcomeToSIPI";
-@import "../styles/team";
+@import "../styles/equipo/id_equipo";
 @import "../styles/news-editor";
+@import "../styles/noticias/index";
 @import "../styles/notFound";
 
 // --- Components --- //
@@ -21,6 +23,7 @@
 @import "../components/widgets/_styles/NotFoundSearches";
 @import "../components/widgets/_styles/SideBar";
 @import "../components/widgets/_styles/LogInBar";
+@import "../components/widgets/_styles/LoadingScreen";
 
 @import "../components/widgets/form/_styles/InputLogIn";
 @import "../components/widgets/form/_styles/InputCheck";

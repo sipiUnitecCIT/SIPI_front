@@ -17,6 +17,7 @@
     
     img{
       @include image-cover-html;
+      object-position: 0 -40px;
     }
   }
   
@@ -27,6 +28,10 @@
     overflow: hidden;
     z-index: 10;
     border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     min-width: $profile-team-image-size;
     min-height: $profile-team-image-size;

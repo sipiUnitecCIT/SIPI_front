@@ -1,0 +1,20 @@
+.Team {
+  @include layout;
+
+  h1 {
+    @apply text-lg sm:text-2xl font-bold pb-4;
+  }
+
+  .table {
+    @include table(4);
+    
+    // El primero de cada fila
+    &__name {
+      @apply font-semibold;
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+}
