@@ -5,7 +5,7 @@ const URL = "/info"
 class InfoService {
   getAll = async () => {
     const { data } = await API.get(URL)
-    return data;
+    return data.data;
   }
   
   getAllTypes = async () => {

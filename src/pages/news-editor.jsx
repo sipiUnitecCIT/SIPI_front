@@ -9,20 +9,41 @@ import InputForm from "@widgets/form/InputForm.jsx";
 import TeamsService from "src/services/teams.js";
 import SelectForm from "@widgets/form/SelectForm.jsx";
 import { getSelectFormFormat } from "@utils/index.js";
+import { getTodayUTC } from "@utils/parseDate/getValues.js";
+import { shortTime } from "@utils/parseDate/formatDisplay.js";
+import useNotification from "src/hooks/useNotification.jsx";
+import NotificationModal from "@widgets/modals/NotificationModal.jsx";
+import LoadingScreen from "@widgets/LoadingScreen.jsx";
+import useLoadingResources from "src/hooks/useLoadingResources.jsx";
+import RenderMarkdown from "@widgets/RenderMarkdown.jsx";
 
 const infoService = new InfoService()
 const teamsService = new TeamsService()
+
+const defaultState = {
+  id_equipo: 0,
+  id_informacionTipo: 0,
+  informacion_titulo: "",
+  informacion_cuerpo: "",
+}
 
 const NewsEditor = () => {
 
   const $form = useRef(null)
   const $textarea = useRef(null)
 
-  const [state, setState] = useState({
-    id_equipo: 0,
-    id_informacionTipo: 0,
-    informacion_titulo: "",
-    informacion_cuerpo: "",
+  const [loading, setLoading] = useState(false)
+  const [state, setState] = useState(defaultState)
+
+  const { notification, showNotification, closeNotification } = useNotification()
+  const { resourcesState, showContent, setResources } = useLoadingResources()
+
+  const { loadingResources, errorResources } = resourcesState
+
+  const [selected, setSelected] = useState({
+    text: "",
+    start: 0,
+    end: 0,
   })
 
   const [teams, setTeams] = useState([
@@ -38,30 +59,25 @@ const NewsEditor = () => {
       try {
 
         const teams = await teamsService.getAll()
-        console.log("teams:", teams.data);
-        
+        console.log("teams:", teams);
+
         const infoTypes = await infoService.getAllTypes()
         console.log("info:", infoTypes);
 
-        const teamsSelectFormat = getSelectFormFormat("equipo_nombre", "id_equipo", teams.data)
+        const teamsSelectFormat = getSelectFormFormat("equipo_nombre", "id_equipo", teams)
         const infoTypesFormat = getSelectFormFormat("informacionTipo_nombre", "id_informacionTipo", infoTypes)
-        
+
         setTeams(teamsSelectFormat)
-        setInfoTypes(infoTypesFormat)  
+        setInfoTypes(infoTypesFormat)
+
+        setResources({ loadingResources: false, errorResources: false })
         
       } catch (error) {
         console.log(error)
+        setResources({ loadingResources: false, errorResources: true })
       }
     })()
   }, [])
-
-  const [loading, setLoading] = useState(false)
-
-  const [selected, setSelected] = useState({
-    text: "",
-    start: 0,
-    end: 0,
-  })
 
   const { informacion_cuerpo } = state
 
@@ -83,7 +99,7 @@ const NewsEditor = () => {
 
     // Se le añade la sintaxis markdown seleccionada al principio y al final
     const modifiedSelected = `${syntax.left}${selected.text}${syntax.right}`
-
+    debugger
     // Se le recorta el valor del textarea y se obtienen 3 textos, el "Inicio | Seleccionado | Final"
     const startCut = informacion_cuerpo.substring(0, selected.start)
     const endCut = informacion_cuerpo.substring(selected.end)
@@ -96,7 +112,14 @@ const NewsEditor = () => {
   }
 
   const handleChange = ({ target }) => {
-    const { name, value } = target
+    let { name, value } = target
+
+    const numberTypes = ["id_equipo", "id_informacionTipo"]
+
+    if (numberTypes.includes(name)) {
+      value = parseInt(value)
+    }
+
     setState({ ...state, [name]: value })
   }
 
@@ -109,15 +132,33 @@ const NewsEditor = () => {
       const body = {
         ...state,
         informacion_idPublicador: "CI-V-27313279",
-        informacion_fechaExpiracion: "2023-02-26T12:00:00Z",
+        informacion_fechaExpiracion: getTodayUTC(),
       }
-      
-      console.log(body)
-      
-      // await infoService.create()
+
+      console.log("body:", body)
+
+      const response = await infoService.create(body)
+      console.log(response)
+
+      $form.current.reset()
+      $form.current.classList.remove("validated")
+      setState(defaultState)
+
+      showNotification({
+        type: "success",
+        title: "¡Excelente!",
+        message: "Se creado la notificia con éxito",
+      })
 
     } catch (error) {
       console.error(error)
+
+      showNotification({
+        type: "danger",
+        title: "¡Ha habido un error!",
+        message: "No se ha podido crear la noticia, intente de nuevo",
+      })
+
     } finally {
       setLoading(false)
     }
@@ -137,73 +178,90 @@ const NewsEditor = () => {
         >
           <h1 className="MainTitle pb-10">Crear nueva noticia</h1>
 
-          <div className="info-options">
-            <InputForm
-              id="informacion_titulo"
-              title="Título de la noticia"
-              onChange={handleChange}
-            />
+          {
+            showContent ?
+              <>
+                
+                <div className="info-options">
+                  <InputForm
+                    id="informacion_titulo"
+                    title="Título de la noticia"
+                    placeholder="Ejemplo: Feria de Proyectos"
+                    onChange={handleChange}
+                  />
 
-            <SelectForm
-              name="id_equipo"
-              options={teams}
-              defaultOption="Selecciona una equipo"
-              title="Equipo de proyecto"
-              onChange={handleChange}
-              className="InputForm"
-            />
+                  <SelectForm
+                    name="id_equipo"
+                    options={teams}
+                    defaultOption="Selecciona una equipo"
+                    title="Equipo de proyecto"
+                    onChange={handleChange}
+                    className="InputForm"
+                  />
 
-            <SelectForm
-              name="id_informacionTipo"
-              options={infoTypes}
-              defaultOption="Selecciona el tipo de noticia"
-              title="Tipo"
-              onChange={handleChange}
-              className="InputForm"
-            />
-          </div>
+                  <SelectForm
+                    name="id_informacionTipo"
+                    options={infoTypes}
+                    defaultOption="Selecciona el tipo de noticia"
+                    title="Tipo"
+                    onChange={handleChange}
+                    className="InputForm"
+                  />
+                </div>
 
+                <div className="editor mb-10">
 
-          <div className="editor mb-10">
+                  <header>
+                    {
+                      markdownButtons.map(({ name, Icon }, i) =>
+                        <button key={i} name={name} type="button" onClick={handleClick}>
+                          <Icon size={15} />
+                        </button>
+                      )
+                    }
+                  </header>
 
-            <header>
-              {
-                markdownButtons.map(({ name, Icon }, i) =>
-                  <button key={i} name={name} type="button" onClick={handleClick}>
-                    <Icon size={15} />
-                  </button>
-                )
-              }
-            </header>
+                  <div className="box">
 
-            <div className="box">
+                    <textarea
+                      required
+                      ref={$textarea}
+                      name="informacion_cuerpo"
+                      onSelect={handleSelect}
+                      onChange={handleChange}
+                      placeholder="Contenido..."
+                    >
+                    </textarea>
 
-              <textarea
-                required
-                ref={$textarea}
-                name="informacion_cuerpo"
-                onSelect={handleSelect}
-                onChange={handleChange}
-              >
-              </textarea>
+                    <RenderMarkdown content={informacion_cuerpo} />
 
-              <div className="post">
-                <ReactMarkdown linkTarget="_blank" remarkPlugins={[remarkGfm]}>
-                  {informacion_cuerpo}
-                </ReactMarkdown>
-              </div>
+                  </div>
+                </div>
 
-            </div>
-          </div>
+                <div className="flex justify-end">
+                  <Button color="!bg-success-light" type="submit" loading={loading}>
+                    Crear Noticia
+                  </Button>
+                </div>
+              </>
+              :
+              <LoadingScreen
+                text border
+                error={errorResources}
+                loading={loadingResources}
+              />
+          }
 
-          <div className="flex justify-end">
-            <Button color="!bg-success-light" type="submit" loading={loading}>
-              Crear Noticia
-            </Button>
-          </div>
         </form>
 
+
       </section>
+
+
+      <NotificationModal
+        {...notification}
+        closeNotification={closeNotification}
+      />
     </main>
   )
 }
