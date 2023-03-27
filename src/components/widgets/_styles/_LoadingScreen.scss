@@ -1,0 +1,38 @@
+.LoadingScreen {
+  $size: 20px;
+  width: 100%;
+
+  &.fullscreen {
+    position: absolute;
+    left: $size;
+    top: $size;
+    width: calc(100% - (2 * $size));
+    height: calc(100% - (2 * $size));
+  }
+  
+  // border: 1px solid ;
+  border-color: rgba($color: #000000, $alpha: .25);
+  border-radius: 15px;
+  font-weight: bold;
+  flex-direction: column;
+  
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  
+  text-align: center;
+  
+  &.error {
+    color: red;
+    // border-color: red;
+  }
+  
+  &.column-direction{
+    grid-auto-flow: column;
+    gap: 15px;
+  }
+}
