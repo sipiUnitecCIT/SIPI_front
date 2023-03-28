@@ -62,14 +62,13 @@ const NewsPost = () => {
 
   const { informacion_titulo, informacion_cuerpo } = info
   const { equipo_nombre } = team
-  
+
   return (
     <main className="NewsPost">
       <SideBar />
-
-      <div className="NewsPost__main">
-        {
-          showContent ?
+      {
+        showContent ?
+          <div className="NewsPost__main">
             <>
               <header style={{ backgroundImage: `url(https://i.imgur.com/hMPsm89.jpg)` }}>
                 <div className="mask"></div>
@@ -89,14 +88,15 @@ const NewsPost = () => {
                 <RenderMarkdown content={informacion_cuerpo} />
               </section>
             </>
-            :
-            <LoadingScreen
-              text border
-              error={errorResources}
-              loading={loadingResources}
-            />
-        }
-      </div>
+          </div>
+          :
+          <LoadingScreen
+            fullscreen
+            spinnerSize="w-16 h-16"
+            error={errorResources}
+            loading={loadingResources}
+          />
+      }
     </main>
   )
 }

@@ -1,9 +1,10 @@
 import Unitec from '@icons/Unitec'
+import Anchor from '@widgets/Anchor'
 import React from 'react'
 
 const NewsCard = ({ info, setShowModal, setSelectedNew }) => {
 
-  const { informacion_titulo, informacion_cuerpo } = info
+  const { id_informacion, informacion_titulo, informacion_cuerpo } = info
 
   const handleClick = () => {
     setShowModal(true)
@@ -14,7 +15,7 @@ const NewsCard = ({ info, setShowModal, setSelectedNew }) => {
   const trimmedDescription = informacion_cuerpo.slice(0, charLimit)
 
   return (
-    <div className="NewsCard" onClick={handleClick}>
+    <Anchor href={`/noticias/${id_informacion}`} className="NewsCard" onClick={handleClick}>
       <div className="NewsCard__overlay"></div>
       {/* <figure className="NewsCard__cover">
         <img src="https://i.imgur.com/jwSMlYa.jpg" alt="" />
@@ -26,7 +27,7 @@ const NewsCard = ({ info, setShowModal, setSelectedNew }) => {
         <h3>{informacion_titulo}</h3>
         <p>{informacion_cuerpo.length > charLimit ? `${trimmedDescription}...` : informacion_cuerpo}</p>
       </div>
-    </div>
+    </Anchor>
   )
 }
 
