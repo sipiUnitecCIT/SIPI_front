@@ -1,0 +1,67 @@
+.NewsPost {
+  @include layout;
+  
+  &__main{
+    padding: 0;
+    background-color: white !important;
+    
+    h1 {
+      @apply text-lg sm:text-4xl font-bold pb-4;
+    }
+  
+    header{
+      @apply text-white rounded-t-2xl p-6 bg-light_grey;
+      position: relative;
+      
+      display: grid;
+      grid-template-columns: minmax(auto, 830px);
+      justify-content: center;
+      align-content: end;
+      
+      min-height: 350px;
+      background-position: 0 -55px;      
+      background-repeat: no-repeat;
+      background-size: cover;
+  
+      .mask{
+        @include mask;
+        z-index: 2;
+        position: absolute;
+      }
+      
+      .info{
+        position: relative;
+        z-index: 2;
+      }
+      
+      .Author{
+        @apply text-lg;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+  
+        @screen xx_sm{
+          grid-template-columns: repeat(4, auto);
+        }
+      }
+    }
+    
+    .post-width{
+    }
+    
+    .post{
+      max-width: 830px;
+      background-color: transparent;
+      
+      p{
+        @apply md:text-base;
+      }
+    }
+    // section{
+    //   @apply p-0;
+    //   overflow: auto;
+    // }
+  }
+}

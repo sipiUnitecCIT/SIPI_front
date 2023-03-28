@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '@widgets/form/Button'
 import { useRouter } from 'next/router'
 import { cuteDate } from '@utils/parseDate/formatDisplay'
+import Anchor from '@widgets/Anchor'
 
 const NewsItem = ({ info, infoTypes, teams, setModal, setSelectedInfo }) => {
 
@@ -23,7 +24,10 @@ const NewsItem = ({ info, infoTypes, teams, setModal, setSelectedInfo }) => {
 
   return (
     <>
-      <span className="font-bold">{informacion_titulo}</span>
+      <Anchor href={`/noticias/${id_informacion}`} className="font-bold !pl-0">
+        {informacion_titulo}
+      </Anchor>
+      {/* <span className="font-bold">{informacion_titulo}</span> */}
       <span>{equipo_siglas}</span>
       <span>{informacion_idPublicador}</span>
       <span>{informacionTipo_nombre}</span>

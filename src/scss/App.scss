@@ -12,7 +12,7 @@
 @import "../styles/WelcomeToSIPI";
 @import "../styles/equipo/id_equipo";
 @import "../styles/news-editor";
-@import "../styles/noticias/index";
+@import "../styles/noticias/[id_informacion]/index";
 @import "../styles/notFound";
 
 // --- Components --- //
@@ -43,6 +43,7 @@
 @import "../components/pages/_styles/UserCard";
 @import "../components/pages/_styles/FeedActivities";
 @import "../components/pages/_styles/CalendarEvents";
+@import "../styles/noticias/index"; //Actual Page
 
 // templates
 @import "../components/templates/_styles/SIPI_Info";
