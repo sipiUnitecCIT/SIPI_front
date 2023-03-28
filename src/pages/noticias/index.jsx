@@ -1,5 +1,6 @@
-import Button from '@widgets/form/Button'
-import SideBar from '@widgets/SideBar'
+import { cuteDate } from '@utils/parseDate/formatDisplay'
+import Button from 'src/components/widgets/form/Button'
+import SideBar from 'src/components/widgets/SideBar'
 import { useRouter } from 'next/router'
 import React, { Fragment, useEffect, useState } from 'react'
 import useLoadingResources from 'src/hooks/useLoadingResources'
@@ -11,7 +12,7 @@ const teamsService = new TeamsService()
 
 const News = () => {
 
-  const { back } = useRouter()
+  const router = useRouter()
 
   const tableFields = [
     "Título",
@@ -38,7 +39,7 @@ const News = () => {
       equipo_canalYoutube: ""
     }
   ])
-  
+
   const [info, setInfo] = useState([
     {
       id_informacion: "",
@@ -64,6 +65,7 @@ const News = () => {
   useEffect(() => {
     (async () => {
       try {
+        setResources({ loadingResources: true })
 
         const info = await infoService.getAll()
         console.log("info:", info)
@@ -73,7 +75,7 @@ const News = () => {
 
         const teams = await teamsService.getAll()
         console.log("teams:", teams)
-        
+
         setInfo(info)
         setInfoTypes(infoTypes)
         setTeams(teams)
@@ -87,12 +89,11 @@ const News = () => {
     })()
   }, [])
 
-
   return (
     <main className="News">
       <SideBar />
       <div className="News__main">
-        <button onClick={back} className="text-sm font-semibold pb-8 pt-4">
+        <button onClick={() => router.push("/")} className="text-sm font-semibold pb-8 pt-4">
           {"< Volver"}
         </button>
 
@@ -112,23 +113,39 @@ const News = () => {
                 showContent &&
                 info.map(item => {
 
-                  const { id_equipo } = item
+                  const { id_equipo, id_informacion } = item
                   const { informacion_titulo, informacion_idPublicador } = item
                   const { informacion_fechaPublicacion, id_informacionTipo } = item
 
                   const infoType = infoTypes.find(type => type.id_informacionTipo === id_informacionTipo)
                   const infoTeam = teams.find(team => team.id_equipo === id_equipo)
-                  
+
+                  const handleEdit = () => {
+                    router.push(`/noticias/${id_informacion}/editar`)
+                  }
+
+                  const handleDelete = async () => {
+                    const response = await infoService.delete(id_informacion)
+                    console.log("ID:", response)
+                    debugger
+                    const filteredInfo = info.filter(item => item.id_informacion !== id_informacion)
+                    setInfo(filteredInfo)
+                  }
+
                   return (
-                    <Fragment key={item.id_informacion}>
-                      <span>{informacion_titulo}</span>
+                    <Fragment key={id_informacion}>
+                      <span className="font-bold">{informacion_titulo}</span>
                       <span>{infoTeam.equipo_siglas}</span>
                       <span>{informacion_idPublicador}</span>
                       <span>{infoType.informacionTipo_nombre}</span>
-                      <span>{informacion_fechaPublicacion}</span>
+                      <span>{cuteDate(informacion_fechaPublicacion)}</span>
                       <span>
-                        <Button color="!bg-info-light mr-4">Editar</Button>
-                        <Button color="!bg-error-light">Eliminar</Button>
+                        <Button color="!bg-info-light mr-4" onClick={handleEdit}>
+                          Editar
+                        </Button>
+                        <Button color="!bg-error-light" onClick={handleDelete}>
+                          Eliminar
+                        </Button>
                       </span>
                     </Fragment>
                   )

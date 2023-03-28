@@ -1,6 +1,6 @@
 import SIPI_Info from '@templates/SIPI_Info';
-import InputForm from '@widgets/form/InputForm';
-import SelectForm from '@widgets/form/SelectForm';
+import InputForm from 'src/components/widgets/form/InputForm';
+import SelectForm from 'src/components/widgets/form/SelectForm';
 import React from 'react';
 
 const Index = () => {

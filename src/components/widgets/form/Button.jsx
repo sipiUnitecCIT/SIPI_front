@@ -1,9 +1,9 @@
-import Spinner from '@widgets/Spinner'
+import Spinner from 'src/components/widgets/Spinner'
 import React from 'react'
 
 const Button = (props) => {
   
-  const { color, loading, type = "button", children, rest} = props
+  const { color, loading, type = "button", children, ...rest} = props
   
   return (
     <button

@@ -2,10 +2,10 @@ import CalendarEvents from '@components/CalendarEvents';
 import NewsCard from '@components/NewsCard';
 import NewsSections from '@components/NewsSections';
 import TeamCard from '@components/TeamCard';
-import LoadingScreen from '@widgets/LoadingScreen';
-import LogInBar from '@widgets/LogInBar';
-import Modal from '@widgets/Modal';
-import SideBar from '@widgets/SideBar';
+import LoadingScreen from 'src/components/widgets/LoadingScreen';
+import LogInBar from 'src/components/widgets/LogInBar';
+import Modal from 'src/components/widgets/Modal';
+import SideBar from 'src/components/widgets/SideBar';
 import React, { useEffect, useState } from 'react'
 import useLoadingResources from 'src/hooks/useLoadingResources';
 import InfoService from 'src/services/info';

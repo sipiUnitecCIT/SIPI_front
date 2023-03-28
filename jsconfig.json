@@ -4,7 +4,7 @@
     "paths": {
       "@utils/*": ["./src/utils/*"],
       "@icons/*": ["./src/components/icons/*"],
-      "@widgets/*": ["./src/components/widgets/*"],
+      "@widgets/*": ["src/components/widgets/*"],
       "@components/*": ["./src/components/pages/*"],
       "@templates/*": ["./src/components/templates/*"],
     }

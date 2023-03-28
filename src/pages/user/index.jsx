@@ -1,7 +1,7 @@
 import FeedActivities from '@components/FeedActivities';
 import UserCard from '@components/UserCard';
-import LogInBar from '@widgets/LogInBar';
-import SideBar from '@widgets/SideBar';
+import LogInBar from 'src/components/widgets/LogInBar';
+import SideBar from 'src/components/widgets/SideBar';
 import React from 'react'
 
 const User = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from './Icon';
+import Icon from '../Icon';
 
 const Image = (props) => (
   <Icon {...props} viewBox="0 0 384 512">

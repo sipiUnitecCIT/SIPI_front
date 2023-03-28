@@ -1,25 +1,25 @@
 @keyframes animationModal{
   from{
-    bottom: -100px;
+    right: -300px;
   }
   to{
-    bottom: 25px;
+    right: 25px;
   }
 }
 
 .NotificationModal {
   @apply p-8 bg-white;
-  // display: none;
+  
   z-index: 999;
   position: fixed;
-  // bottom: 0px;
-  left: calc(50% - 200px);
+  top: 25px;
+  
   max-width: 400px;
   border-radius: 5px;
   box-shadow: 1px 5px 20px -3px rgba(0, 0, 0, 0.2);
   
   animation-name: animationModal;
-  animation-duration: .5s;
+  animation-duration: .3s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in;
   
@@ -35,13 +35,13 @@
   }
   
   &.modal_green::before{
-    @apply bg-green-500;
+    @apply bg-success-light;
   }
   &.modal_yellow::before{
-    @apply bg-yellow-500;
+    @apply bg-warning-light;
   }
   &.modal_red::before{
-    @apply bg-red-500;
+    @apply bg-error-light;
   }
   
   span{
@@ -54,7 +54,7 @@
       font-size: 1.6rem;
     }
     &:nth-of-type(2){
-      @apply text-grayText;
+      @apply text-dark_grey;
       font-size: 1.4rem;
       font-size: 1.4rem;
     }
@@ -66,7 +66,7 @@
     right: 15px;
     
     svg{
-      @apply fill-gray-400;
+      @apply fill-dark_grey;
     }
   }
   

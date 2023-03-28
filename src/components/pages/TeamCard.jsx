@@ -1,4 +1,4 @@
-import Anchor from '@widgets/Anchor'
+import Anchor from 'src/components/widgets/Anchor'
 import React from 'react'
 import Unitec from '@icons/Unitec'
 

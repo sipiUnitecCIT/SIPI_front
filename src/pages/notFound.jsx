@@ -1,5 +1,5 @@
 import React from 'react'
-import NotFoundSearches from '@widgets/NoFoundSearches'
+import NotFoundSearches from 'src/components/widgets/NoFoundSearches'
 
 const NotFound = () => {
   return (

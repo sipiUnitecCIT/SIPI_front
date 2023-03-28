@@ -1,5 +1,5 @@
 import TeamMembers from '@components/TeamMembers'
-import SideBar from '@widgets/SideBar'
+import SideBar from 'src/components/widgets/SideBar'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import TeamsService from 'src/services/teams'
@@ -7,8 +7,8 @@ import TeamsService from 'src/services/teams'
 const teamsService = new TeamsService()
 
 const Team = () => {
-  const { query, back } = useRouter()
-  const { id_equipo } = query
+  const router = useRouter()
+  const { id_equipo } = router.query
 
   const [team, setTeam] = useState({
     id_equipo: 0,
@@ -45,7 +45,7 @@ const Team = () => {
     }
   ])
 
-  const theresQuery = Boolean(Object.keys(query).length)
+  const theresQuery = Boolean(Object.keys(router.query).length)
 
   useEffect(() => {
     (async () => {
@@ -75,7 +75,7 @@ const Team = () => {
       <SideBar />
       <div className="Team__main">
 
-        <button onClick={back} className="text-sm font-semibold pb-8 pt-4">
+        <button onClick={()=> router.push("/")} className="text-sm font-semibold pb-8 pt-4">
           {"< Volver"}
         </button>
 

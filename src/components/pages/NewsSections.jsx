@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from '@widgets/Modal'
+import Modal from 'src/components/widgets/Modal'
 import NewsCard from './NewsCard'
 
 const NewsSections = ({ info }) => {

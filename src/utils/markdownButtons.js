@@ -1,11 +1,11 @@
-import Bold from "@icons/Bold";
-import Code from "@icons/Code";
-import Image from "@icons/Image";
-import Italic from "@icons/Italic";
-import Link from "@icons/Link";
-import List from "@icons/List";
-import OrderedList from "@icons/OrderedList";
-import Quote from "@icons/Quote";
+import Bold from "@icons/EditorIcons/Bold";
+import Code from "@icons/EditorIcons/Code";
+import Image from "@icons/EditorIcons/Image";
+import Italic from "@icons/EditorIcons/Italic";
+import Link from "@icons/EditorIcons/Link";
+import List from "@icons/EditorIcons/List";
+import OrderedList from "@icons/EditorIcons/OrderedList";
+import Quote from "@icons/EditorIcons/Quote";
 
 const markdownButtons = [
   {

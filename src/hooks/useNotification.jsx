@@ -12,25 +12,25 @@ const useNotification = () => {
 
   const [notification, setNotification] = useState(initialState)
 
-  // Muestra la notificación, pero después de 10 segundos desaparece por sí sola
-  const showNotification = (message) => {
-    setNotification({
-      ...message, show: true,
-    })
-    
-    setTimeout(() => 
-      closeNotification()
-    , 10000)
-  }
+  const handleNotification = {
+    // Muestra la notificación, pero después de 10 segundos desaparece por sí sola
+    show: function (message) {
+      setNotification({
+        ...message, show: true,
+      })
 
-  const closeNotification = () => {
-    setNotification(initialState)
+      // setTimeout(() =>
+      //   this.close()
+      // , 10000)
+    },
+    // Resets notification state
+    close: function () {
+      setNotification(initialState)
+    }
   }
 
   return {
-    notification,
-    showNotification,
-    closeNotification,
+    notification, handleNotification
   }
 }
 

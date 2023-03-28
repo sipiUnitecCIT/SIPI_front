@@ -19,7 +19,6 @@ export const shortTime = (time) => {
 
 export const cuteDate = (date) => {
   // date = "2023-06-23T14:00:00Z"
-  console.log("date -> ", date)
   if (date) {
     const formatDate = new Date(date)
 

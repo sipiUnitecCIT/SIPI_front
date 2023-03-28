@@ -1,8 +1,8 @@
 import React from 'react';
-import InputLogIn from '@widgets/form/InputLogIn';
-import InputCheck from '@widgets/form/InputCheck';
-import Button from '@widgets/form/Button';
-import Anchor from '@widgets/Anchor';
+import InputLogIn from 'src/components/widgets/form/InputLogIn';
+import InputCheck from 'src/components/widgets/form/InputCheck';
+import Button from 'src/components/widgets/form/Button';
+import Anchor from 'src/components/widgets/Anchor';
 
 const LogIn = ({userName, password, handleChange}) => {
   return (
