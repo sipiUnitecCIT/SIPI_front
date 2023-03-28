@@ -3,11 +3,11 @@ import Portal from './modals/Portal'
 import Cross from '@icons/Cross'
 import { getDataAttribute } from '@utils/index'
 
-const Modal = ({ showModal, setShowModal, size, closeButton = true, children }) => {
+const Modal = ({ showModal, setModal, size, closeButton = true, children }) => {
 
   const handleClick = ({ target }) => {
     const clickedOutModal = getDataAttribute(target, "modal")
-    if (clickedOutModal) setShowModal(false)
+    if (clickedOutModal) setModal(false)
   }
 
   const onClick = closeButton ? handleClick : null
@@ -23,7 +23,7 @@ const Modal = ({ showModal, setShowModal, size, closeButton = true, children }) 
         <div className="Modal_container">
           {
             closeButton &&
-            <button className="close_btn" onClick={() => setShowModal(false)}>
+            <button className="close_btn" onClick={() => setModal(false)}>
               <Cross className="fill-black w-6 h-6" />
             </button>
           }

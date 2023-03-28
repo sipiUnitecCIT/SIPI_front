@@ -7,13 +7,10 @@ const Portal = ({ type = "modal", children }) => {
 
   useEffect(() => {
     setMounted(true)
-    return () => setMounted(false)
   }, [])
 
-  const $element = document.getElementById(type)
-
   return (
-    mounted ? createPortal(children, $element) : <></>
+    mounted ? createPortal(children, document.getElementById(type)) : <></>
   )
 }
 

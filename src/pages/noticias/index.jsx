@@ -7,6 +7,10 @@ import useLoadingResources from 'src/hooks/useLoadingResources'
 import InfoService from 'src/services/info'
 import TeamsService from 'src/services/teams'
 import LoadingScreen from '@widgets/LoadingScreen'
+import ConfirmModal from '@widgets/modals/ConfirmModal'
+import NewsItem from '@components/NewsItem'
+import useNotification from 'src/hooks/useNotification'
+import NotificationModal from '@widgets/modals/NotificationModal'
 
 const infoService = new InfoService()
 const teamsService = new TeamsService()
@@ -15,17 +19,22 @@ const News = () => {
 
   const router = useRouter()
 
-  const tableFields = [
-    "Título",
-    "Equipo",
-    "Creador",
-    "Tipo",
-    "Fecha de Publicación",
-    "",
-  ]
+  const [showModal, setModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const { notification, handleNotification } = useNotification()
+
+  const [selectedInfo, setSelectedInfo] = useState({
+    id_informacion: "",
+    informacion_titulo: "",
+    informacion_cuerpo: "",
+    id_informacionTipo: 0,
+    informacion_idPublicador: "",
+    id_equipo: 0,
+    informacion_fechaPublicacion: "",
+    informacion_fechaExpiracion: "",
+  })
 
   const { resourcesState, showContent, setResources } = useLoadingResources()
-
   const { loadingResources, errorResources } = resourcesState
 
   const [teams, setTeams] = useState([
@@ -90,6 +99,47 @@ const News = () => {
     })()
   }, [])
 
+  const tableFields = [
+    "Título",
+    "Equipo",
+    "Creador",
+    "Tipo",
+    "Fecha de Publicación",
+    "",
+  ]
+
+  const handleDelete = async () => {
+    const { id_informacion } = selectedInfo
+    setLoading(true)
+
+    try {
+      const response = await infoService.delete(id_informacion)
+      console.log("ID:", response)
+
+      const filteredInfo = info.filter(item => item.id_informacion !== id_informacion)
+      setInfo(filteredInfo)
+
+      handleNotification.show({
+        type: "success",
+        title: "Exito",
+        message: `Se ha eliminado la noticia satisfactoriamente`,
+      })
+
+    } catch (error) {
+
+      console.error(error);
+      handleNotification.show({
+        type: "danger",
+        title: "Error",
+        message: `No se podido eliminar la noticia, intentelo de nuevo`,
+      })
+
+    } finally {
+      setLoading(false)
+      setModal(false)
+    }
+  }
+
   return (
     <main className="News">
       <SideBar />
@@ -98,7 +148,15 @@ const News = () => {
           {"< Volver"}
         </button>
 
-        <h1>Noticias</h1>
+        <div className="flex justify-between items-center pb-4">
+          <h1 className="!p-0">Noticias</h1>
+          <Button
+            color="!bg-success-light"
+            onClick={() => router.push("/noticias/crear")}
+          >
+            Nuevo
+          </Button>
+        </div>
 
         <section>
           {
@@ -113,45 +171,16 @@ const News = () => {
 
                 <>
                   {
-                    info.map(item => {
-
-                      const { id_equipo, id_informacion } = item
-                      const { informacion_titulo, informacion_idPublicador } = item
-                      const { informacion_fechaPublicacion, id_informacionTipo } = item
-
-                      const infoType = infoTypes.find(type => type.id_informacionTipo === id_informacionTipo)
-                      const infoTeam = teams.find(team => team.id_equipo === id_equipo)
-
-                      const handleEdit = () => {
-                        router.push(`/noticias/${id_informacion}/editar`)
-                      }
-
-                      const handleDelete = async () => {
-                        const response = await infoService.delete(id_informacion)
-                        console.log("ID:", response)
-                        debugger
-                        const filteredInfo = info.filter(item => item.id_informacion !== id_informacion)
-                        setInfo(filteredInfo)
-                      }
-
-                      return (
-                        <Fragment key={id_informacion}>
-                          <span className="font-bold">{informacion_titulo}</span>
-                          <span>{infoTeam.equipo_siglas}</span>
-                          <span>{informacion_idPublicador}</span>
-                          <span>{infoType.informacionTipo_nombre}</span>
-                          <span>{cuteDate(informacion_fechaPublicacion)}</span>
-                          <span>
-                            <Button color="!bg-info-light mr-4" onClick={handleEdit}>
-                              Editar
-                            </Button>
-                            <Button color="!bg-error-light" onClick={handleDelete}>
-                              Eliminar
-                            </Button>
-                          </span>
-                        </Fragment>
-                      )
-                    })
+                    info.map(item =>
+                      <NewsItem
+                        info={item}
+                        teams={teams}
+                        infoTypes={infoTypes}
+                        setModal={setModal}
+                        setSelectedInfo={setSelectedInfo}
+                        key={item.id_informacion}
+                      />
+                    )
                   }
                 </>
 
@@ -164,6 +193,30 @@ const News = () => {
               />
           }
         </section>
+
+        <NotificationModal
+          {...notification}
+          closeNotification={handleNotification.close}
+        />
+
+        <ConfirmModal
+          loading={loading}
+          type="warning"
+          message="¿Estás seguro de que quieres eliminar la noticia?"
+          handleModal={{
+            showModal,
+            setModal,
+          }}
+          button1={{
+            color: "!bg-success-light",
+            onClick: handleDelete,
+          }}
+          button2={{
+            color: "!bg-error-light",
+            onClick: () => setModal(false),
+          }}
+        />
+
       </div>
     </main>
   )

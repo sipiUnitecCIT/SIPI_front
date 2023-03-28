@@ -41,24 +41,6 @@ const NewsSections = ({ info }) => {
           )
         }
       </div>
-      
-      <ConfirmModal
-        type="warning"
-        message="¿Estás seguro de que quieres eliminar la noticia?"
-        handleModal={{
-          showModal,
-          setShowModal,
-        }}
-        button1={{
-          color: "!bg-success-light",
-          onClick: ()=>setShowModal(false),
-        }}
-        button2={{
-          color: "!bg-error-light",
-          onClick: ()=>setShowModal(false),
-        }}
-      />
-
     </section>
   )
 }

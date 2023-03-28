@@ -16,6 +16,7 @@ import TeamsService from 'src/services/teams'
 import { getSelectFormFormat } from '@utils/index'
 import { getTodayUTC } from '@utils/parseDate/getValues'
 import { useRouter } from 'next/router'
+import ConfirmModal from '@widgets/modals/ConfirmModal'
 
 const infoService = new InfoService()
 const teamsService = new TeamsService()
@@ -25,6 +26,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
   const $form = useRef(null)
   const $textarea = useRef(null)
 
+  const [showModal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const { resourcesState, showContent, setResources } = useLoadingResources()
@@ -116,8 +118,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
     setInfo({ ...info, [name]: value })
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true)
 
     try {
@@ -137,18 +138,18 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
         setInfo(defaultState)
         $form.current.reset()
         $form.current.classList.remove("validated")
-        
+
       } else {
 
         await infoService.update(id_informacion, body)
         $form.current.classList.remove("validated")
-        
+
       }
 
       handleNotification.show({
         type: "success",
         title: "¡Excelente!",
-        message: `Se ha ${isNew ? "creado" : "modificado"} la notificia con éxito`,
+        message: `Se ha ${isNew ? "creado" : "modificado"} la noticia con éxito`,
       })
 
     } catch (error) {
@@ -162,6 +163,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
     } finally {
       setLoading(false)
+      setModal(false)
     }
   }
 
@@ -170,7 +172,14 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
   return (
     <form
       ref={$form}
-      onSubmit={handleSubmit}
+      onSubmit={(event) => {
+        event.preventDefault()
+        if(isNew){
+          handleSubmit()
+        }else{
+          setModal(true)
+        }
+      }}
       onInvalid={() => $form.current.classList.add("validated")}
     >
 
@@ -257,6 +266,24 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
             loading={loadingResources}
           />
       }
+
+      <ConfirmModal
+        loading={loading}
+        type="warning"
+        message="¿Estás seguro de que quieres actualizar la noticia?"
+        handleModal={{
+          showModal,
+          setModal,
+        }}
+        button1={{
+          color: "!bg-success-light",
+          onClick: handleSubmit,
+        }}
+        button2={{
+          color: "!bg-error-light",
+          onClick: () => setModal(false),
+        }}
+      />
 
     </form>
   )

@@ -2,4 +2,9 @@
   padding: 10px;
   border-radius: 5px;
   @apply bg-primary text-base text-white font-semibold;
+
+  &:disabled {
+    color: #ced9e9;
+    background-color: rgb(154 163 174);
+  }
 }
