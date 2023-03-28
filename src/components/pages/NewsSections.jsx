@@ -1,3 +1,4 @@
+import ConfirmModal from '@widgets/modals/ConfirmModal'
 import React, { useState } from 'react'
 import Modal from 'src/components/widgets/Modal'
 import NewsCard from './NewsCard'
@@ -5,7 +6,7 @@ import NewsCard from './NewsCard'
 const NewsSections = ({ info }) => {
 
   const [showModal, setShowModal] = useState(false)
-  
+
   const [selectedNew, setSelectedNew] = useState({
 
     id_informacion: "",
@@ -27,6 +28,7 @@ const NewsSections = ({ info }) => {
   return (
     <section className="Home__news">
       <h2>Noticias</h2>
+      
       <div className="Home__news-list">
         {
           info.map(item =>
@@ -39,11 +41,24 @@ const NewsSections = ({ info }) => {
           )
         }
       </div>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        selectedNew={selectedNew}
+      
+      <ConfirmModal
+        type="warning"
+        message="¿Estás seguro de que quieres eliminar la noticia?"
+        handleModal={{
+          showModal,
+          setShowModal,
+        }}
+        button1={{
+          color: "!bg-success-light",
+          onClick: ()=>setShowModal(false),
+        }}
+        button2={{
+          color: "!bg-error-light",
+          onClick: ()=>setShowModal(false),
+        }}
       />
+
     </section>
   )
 }

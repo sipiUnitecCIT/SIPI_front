@@ -1,0 +1,20 @@
+.ConfirmModal {
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .buttons-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    &.two-buttons {
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+}

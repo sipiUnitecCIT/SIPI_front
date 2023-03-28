@@ -28,7 +28,6 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
   const [loading, setLoading] = useState(false)
 
   const { resourcesState, showContent, setResources } = useLoadingResources()
-
   const { loadingResources, errorResources } = resourcesState
 
   const router = useRouter()
@@ -184,7 +183,6 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
       {
         showContent ?
           <>
-
             <div className="info-options">
               <InputForm
                 id="informacion_titulo"
@@ -219,6 +217,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
               <header>
                 {
+                  // Botones del Markdown Editor
                   markdownButtons.map(({ name, Icon }, i) =>
                     <button key={i} name={name} type="button" onClick={handleClick}>
                       <Icon size={15} />
@@ -247,7 +246,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
             <div className="flex justify-end">
               <Button color="!bg-success-light" type="submit" loading={loading}>
-                {isNew ? "Crear" : "Editar"} Noticia
+                {isNew ? "Crear" : "Actualizar"} Noticia
               </Button>
             </div>
           </>

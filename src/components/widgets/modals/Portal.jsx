@@ -10,10 +10,11 @@ const Portal = ({ type = "modal", children }) => {
     return () => setMounted(false)
   }, [])
 
+  const $element = document.getElementById(type)
 
-  return mounted
-    ? createPortal(children, document.getElementById(type) )
-    : null
+  return (
+    mounted ? createPortal(children, $element) : <></>
+  )
 }
 
 export default Portal;

@@ -6,6 +6,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import useLoadingResources from 'src/hooks/useLoadingResources'
 import InfoService from 'src/services/info'
 import TeamsService from 'src/services/teams'
+import LoadingScreen from '@widgets/LoadingScreen'
 
 const infoService = new InfoService()
 const teamsService = new TeamsService()
@@ -100,60 +101,68 @@ const News = () => {
         <h1>Noticias</h1>
 
         <section>
-          <div className="table">
+          {
+            showContent ?
+              <div className="table">
 
-            <div className="table__fields">
-              {tableFields.map((field, i) =>
-                <span key={i}>{field}</span>
-              )}
-            </div>
+                <div className="table__fields">
+                  {tableFields.map((field, i) =>
+                    <span key={i}>{field}</span>
+                  )}
+                </div>
 
-            <>
-              {
-                showContent &&
-                info.map(item => {
+                <>
+                  {
+                    info.map(item => {
 
-                  const { id_equipo, id_informacion } = item
-                  const { informacion_titulo, informacion_idPublicador } = item
-                  const { informacion_fechaPublicacion, id_informacionTipo } = item
+                      const { id_equipo, id_informacion } = item
+                      const { informacion_titulo, informacion_idPublicador } = item
+                      const { informacion_fechaPublicacion, id_informacionTipo } = item
 
-                  const infoType = infoTypes.find(type => type.id_informacionTipo === id_informacionTipo)
-                  const infoTeam = teams.find(team => team.id_equipo === id_equipo)
+                      const infoType = infoTypes.find(type => type.id_informacionTipo === id_informacionTipo)
+                      const infoTeam = teams.find(team => team.id_equipo === id_equipo)
 
-                  const handleEdit = () => {
-                    router.push(`/noticias/${id_informacion}/editar`)
+                      const handleEdit = () => {
+                        router.push(`/noticias/${id_informacion}/editar`)
+                      }
+
+                      const handleDelete = async () => {
+                        const response = await infoService.delete(id_informacion)
+                        console.log("ID:", response)
+                        debugger
+                        const filteredInfo = info.filter(item => item.id_informacion !== id_informacion)
+                        setInfo(filteredInfo)
+                      }
+
+                      return (
+                        <Fragment key={id_informacion}>
+                          <span className="font-bold">{informacion_titulo}</span>
+                          <span>{infoTeam.equipo_siglas}</span>
+                          <span>{informacion_idPublicador}</span>
+                          <span>{infoType.informacionTipo_nombre}</span>
+                          <span>{cuteDate(informacion_fechaPublicacion)}</span>
+                          <span>
+                            <Button color="!bg-info-light mr-4" onClick={handleEdit}>
+                              Editar
+                            </Button>
+                            <Button color="!bg-error-light" onClick={handleDelete}>
+                              Eliminar
+                            </Button>
+                          </span>
+                        </Fragment>
+                      )
+                    })
                   }
+                </>
 
-                  const handleDelete = async () => {
-                    const response = await infoService.delete(id_informacion)
-                    console.log("ID:", response)
-                    debugger
-                    const filteredInfo = info.filter(item => item.id_informacion !== id_informacion)
-                    setInfo(filteredInfo)
-                  }
-
-                  return (
-                    <Fragment key={id_informacion}>
-                      <span className="font-bold">{informacion_titulo}</span>
-                      <span>{infoTeam.equipo_siglas}</span>
-                      <span>{informacion_idPublicador}</span>
-                      <span>{infoType.informacionTipo_nombre}</span>
-                      <span>{cuteDate(informacion_fechaPublicacion)}</span>
-                      <span>
-                        <Button color="!bg-info-light mr-4" onClick={handleEdit}>
-                          Editar
-                        </Button>
-                        <Button color="!bg-error-light" onClick={handleDelete}>
-                          Eliminar
-                        </Button>
-                      </span>
-                    </Fragment>
-                  )
-                })
-              }
-            </>
-
-          </div>
+              </div>
+              :
+              <LoadingScreen
+                text border
+                error={errorResources}
+                loading={loadingResources}
+              />
+          }
         </section>
       </div>
     </main>
