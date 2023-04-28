@@ -6,6 +6,14 @@
   }
   
   .table{
-    @include table(6)
+    @include table(1);
+    
+    @screen md{
+      @include table(6);
+    }
+    
+    span:nth-of-type(5n + 5){
+      @apply border-b md:border-0 border-solid border-light_grey;
+    }
   }
 }

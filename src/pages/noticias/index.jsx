@@ -154,7 +154,7 @@ const News = () => {
             color="!bg-success-light"
             onClick={() => router.push("/noticias/crear")}
           >
-            Nuevo
+            Crear Nuevo
           </Button>
         </div>
 

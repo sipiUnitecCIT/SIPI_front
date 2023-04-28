@@ -10,7 +10,7 @@
     @apply p-4 text-sm;
     align-self: center;
   }
-
+ 
   // El primero de cada fila
   // a,
   // span:nth-of-type(#{$columns}n + 1),
@@ -22,9 +22,8 @@
   //La cabecera
   &__fields {
     @apply border-b-2 border-solid border-light_grey;
-    span:first-of-type,
-     {
-      @apply pl-0;
+    span:first-of-type{
+      @apply md:pl-0;
     }
     grid-column-start: 1;
     grid-column-end: ($columns + 1);
@@ -36,6 +35,9 @@
       //Las celdas de la cabecera
       @apply text-base text-light_grey font-semibold;
       width: 100%;
+      border: 0 !important;
     }
+    
+    
   }
 }

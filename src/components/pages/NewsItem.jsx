@@ -24,7 +24,7 @@ const NewsItem = ({ info, infoTypes, teams, setModal, setSelectedInfo }) => {
 
   return (
     <>
-      <Anchor href={`/noticias/${id_informacion}`} className="font-bold !pl-0">
+      <Anchor href={`/noticias/${id_informacion}`} className="font-bold !md:pl-0">
         {informacion_titulo}
       </Anchor>
       {/* <span className="font-bold">{informacion_titulo}</span> */}

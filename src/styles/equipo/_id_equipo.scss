@@ -6,7 +6,14 @@
   }
 
   .table {
-    @include table(4);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);    
+    
+    @include table(1);
+    
+    @screen md{
+      @include table(4);
+    }
     
     // El primero de cada fila
     &__name {

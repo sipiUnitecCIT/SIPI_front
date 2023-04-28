@@ -13,7 +13,7 @@ const TeamMember = ({ member }) => {
 
   return (
     <>
-      <span className="table__name !pl-0">
+      <span className="table__name !md:pl-0">
         <img className="rounded-full" width={35} src={defaultImage} alt={`${name}-profile-image`} />
         <span>{name}</span>
       </span>
