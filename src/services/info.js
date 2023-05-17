@@ -17,6 +17,11 @@ class InfoService {
     const { data } = await API.get(`${URL}/${id}`)
     return data;
   }
+  
+  findType = async (id) => {
+    const { data } = await API.get(`${URL}/types/${id}`)
+    return data;
+  }
 
   create = async (body) => {
     const { data } = await API.post(URL, body)

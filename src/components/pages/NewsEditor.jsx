@@ -40,29 +40,33 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
     end: 0,
   })
 
-  const [teams, setTeams] = useState([
-    { name: "", value: 0 },
-  ])
+  const [state, setState] = useState({
+    teams: [],
+    infoTypes: [],
+  })
 
-  const [infoTypes, setInfoTypes] = useState([
-    { name: "", value: 0 },
-  ])
+  const [selectFormat, setSelectFormat] = useState({
+    teams: [
+      { name: "", value: 0 }
+    ],
+    infoTypes: [
+      { name: "", value: 0 }
+    ],
+  })
 
   useEffect(() => {
     (async () => {
       try {
 
         const teams = await teamsService.getAll()
-        console.log("teams:", teams);
-
         const infoTypes = await infoService.getAllTypes()
-        console.log("info:", infoTypes);
 
-        const teamsSelectFormat = getSelectFormFormat("equipo_nombre", "id_equipo", teams)
-        const infoTypesFormat = getSelectFormFormat("informacionTipo_nombre", "id_informacionTipo", infoTypes)
+        setState({ teams, infoTypes })
 
-        setTeams(teamsSelectFormat)
-        setInfoTypes(infoTypesFormat)
+        setSelectFormat({
+          teams: getSelectFormFormat("equipo_nombre", "id_equipo", teams),
+          infoTypes: getSelectFormFormat("informacionTipo_nombre", "id_informacionTipo", infoTypes)
+        })
 
         setResources({ loadingResources: false, errorResources: false })
 
@@ -124,6 +128,10 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
     try {
 
       const { id_informacion } = info
+      const { infoTypes, teams } = state
+
+      const { equipo_nombre } = teams.find(item => item.id_informacionTipo === id_equipo)
+      const { informacionTipo_nombre } = infoTypes.find(item => item.id_informacionTipo === id_informacionTipo)
 
       const body = {
         ...info,
@@ -145,6 +153,8 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
         $form.current.classList.remove("validated")
 
       }
+      
+      
 
       handleNotification.show({
         type: "success",
@@ -174,9 +184,9 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
       ref={$form}
       onSubmit={(event) => {
         event.preventDefault()
-        if(isNew){
+        if (isNew) {
           handleSubmit()
-        }else{
+        } else {
           setModal(true)
         }
       }}
@@ -203,7 +213,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
               <SelectForm
                 name="id_equipo"
-                options={teams}
+                options={selectFormat.teams}
                 value={id_equipo}
                 defaultOption="Selecciona una equipo"
                 title="Equipo de proyecto"
@@ -213,7 +223,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
               <SelectForm
                 name="id_informacionTipo"
-                options={infoTypes}
+                options={selectFormat.infoTypes}
                 defaultOption="Selecciona el tipo de noticia"
                 title="Tipo"
                 value={id_informacionTipo}
