@@ -17,9 +17,13 @@ import { getSelectFormFormat } from '@utils/index'
 import { getTodayUTC } from '@utils/parseDate/getValues'
 import { useRouter } from 'next/router'
 import ConfirmModal from '@widgets/modals/ConfirmModal'
+import StudentService from 'src/services/students'
+import EmailService from 'src/services/email'
 
 const infoService = new InfoService()
+const emailService = new EmailService()
 const teamsService = new TeamsService()
+const studentService = new StudentService()
 
 const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) => {
 
@@ -146,6 +150,13 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
         setInfo(defaultState)
         $form.current.reset()
         $form.current.classList.remove("validated")
+        
+        const students = await studentService.getAll()
+        const studentEmails = students.map(item => item.persona_correo.toLowerCase()).join(", ")
+        
+        console.log("emails:", studentEmails)
+        
+        // await emailService.sendNotification(studentEmails)
 
       } else {
 
@@ -154,7 +165,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
       }
       
-      
+      // const emails = array.map(item => item.persona_correo.toLowerCase()).join(", ")
 
       handleNotification.show({
         type: "success",
