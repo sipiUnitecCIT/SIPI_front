@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 import ConfirmModal from '@widgets/modals/ConfirmModal'
 import StudentService from 'src/services/students'
 import EmailService from 'src/services/email'
+import Switch from '@widgets/Switch'
 
 const infoService = new InfoService()
 const emailService = new EmailService()
@@ -38,12 +39,6 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
 
   const router = useRouter()
 
-  const [selected, setSelected] = useState({
-    text: "",
-    start: 0,
-    end: 0,
-  })
-
   const [state, setState] = useState({
     teams: [],
     infoTypes: [],
@@ -56,6 +51,12 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
     infoTypes: [
       { name: "", value: 0 }
     ],
+  })
+
+  const [selected, setSelected] = useState({
+    text: "",
+    start: 0,
+    end: 0,
   })
 
   useEffect(() => {
@@ -126,15 +127,18 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
     setInfo({ ...info, [name]: value })
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     setLoading(true)
+
+    const form = new FormData($form.current)
+    const sendEmail = document.getElementById("send-email")
 
     try {
 
       const { id_informacion } = info
       const { infoTypes, teams } = state
-
-      const { equipo_nombre } = teams.find(item => item.id_informacionTipo === id_equipo)
+      debugger
+      const { equipo_nombre } = teams.find(item => item.id_equipo === id_equipo)
       const { informacionTipo_nombre } = infoTypes.find(item => item.id_informacionTipo === id_informacionTipo)
 
       const body = {
@@ -150,13 +154,6 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
         setInfo(defaultState)
         $form.current.reset()
         $form.current.classList.remove("validated")
-        
-        const students = await studentService.getAll()
-        const studentEmails = students.map(item => item.persona_correo.toLowerCase()).join(", ")
-        
-        console.log("emails:", studentEmails)
-        
-        // await emailService.sendNotification(studentEmails)
 
       } else {
 
@@ -164,8 +161,24 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
         $form.current.classList.remove("validated")
 
       }
-      
-      // const emails = array.map(item => item.persona_correo.toLowerCase()).join(", ")
+        
+      if(sendEmail.checked){
+        const students = await studentService.getAll()
+        const studentEmails = students.map(item => item.persona_correo.toLowerCase())
+  
+        console.log("emails:", studentEmails)
+        
+        const emails = [
+          "fzamudio@gmail.com",
+          "ommv.17@gmail.com",
+          "ommv.17@hotmail.com",
+          "ojmendoza14@gmail.com",
+          "marietsy.911.mm@gmail.com",
+          "orlando.mendoza@kraftheinz.com",
+        ]
+        await emailService.sendNotification(emails)
+      }
+
 
       handleNotification.show({
         type: "success",
@@ -274,7 +287,9 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
               </div>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end items-center">
+              <Switch label="Enviar notificación por correo" className="pr-5" id="send-email" />
+
               <Button color="!bg-success-light" type="submit" loading={loading}>
                 {isNew ? "Crear" : "Actualizar"} Noticia
               </Button>
@@ -287,6 +302,7 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
             loading={loadingResources}
           />
       }
+
 
       <ConfirmModal
         loading={loading}
