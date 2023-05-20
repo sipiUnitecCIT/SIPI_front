@@ -31,12 +31,12 @@ const CalendarLinks = ({ info, team, infoType }) => {
     <div className="CalendarLinks">
       <ul>
         <li>
-          <a href={links.calendar_link_gmail} target="_blank">
+          <a href={links.calendar_link_gmail} target="_blank" rel="noopener noreferrer">
             <img src="https://i.imgur.com/OCNcEvH.png" alt="gmail-logo" />
           </a>
         </li>
         <li>
-          <a href={links.calendar_link_outlook} target="_blank">
+          <a href={links.calendar_link_outlook} target="_blank" rel="noopener noreferrer">
             <img src="https://i.imgur.com/jIkKTbt.png" alt="outlook-logo" />
           </a>
         </li>
