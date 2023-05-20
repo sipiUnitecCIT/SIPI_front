@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import InfoService from 'src/services/info'
 import RenderMarkdown from '@widgets/RenderMarkdown'
 import TeamsService from 'src/services/teams'
+import CalendarLinks from '@components/CalendarLinks'
 
 const infoService = new InfoService()
 const teamsService = new TeamsService()
@@ -75,10 +76,18 @@ const NewsPost = () => {
                 <div className="info px-8">
                   <h3 className="Subtitle pb-4">{informacion_titulo}</h3>
                   <div className="Author">
-                    <img className="inline-block" width={25} src="https://i.imgur.com/ivy9J8b.png" alt={`${name}profile_image`} />
+
+                    <img
+                      width={25}
+                      className="inline-block"
+                      src="https://i.imgur.com/ivy9J8b.png"
+                      alt={`${name}profile_image`}
+                    />
+
                     <span className="font-semibold inline-block">
                       Orlando Mendoza <span className="text-base font-regular">- {equipo_nombre}</span>
                     </span>
+
                     {/* <Clock className="fill-white w-6 h-6"/> <span className="font-semibold text-sm inline-block">{lastTime}</span> */}
                   </div>
                 </div>
@@ -97,6 +106,9 @@ const NewsPost = () => {
             loading={loadingResources}
           />
       }
+
+      <CalendarLinks />
+
     </main>
   )
 }

@@ -172,9 +172,10 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
           "fzamudio@gmail.com",
           "ommv.17@gmail.com",
           "ommv.17@hotmail.com",
-          "ojmendoza14@gmail.com",
-          "marietsy.911.mm@gmail.com",
+          "sipiunitec@gmail.com",
           "orlando.mendoza@kraftheinz.com",
+          // "marietsy.911.mm@gmail.com",
+          // "ojmendoza14@gmail.com",
         ]
         await emailService.sendNotification(emails)
       }
@@ -288,7 +289,12 @@ const NewsEditor = ({ isNew, handleNotification, info, defaultState, setInfo }) 
             </div>
 
             <div className="flex justify-end items-center">
-              <Switch label="Enviar notificación por correo" className="pr-5" id="send-email" />
+              
+              <Switch
+                id="send-email"
+                className="pr-5"
+                label="Enviar notificación por correo"
+              />
 
               <Button color="!bg-success-light" type="submit" loading={loading}>
                 {isNew ? "Crear" : "Actualizar"} Noticia
