@@ -38,6 +38,13 @@ const NewsPost = () => {
     equipo_canalYoutube: ""
   })
 
+  const [infoType, setInfoType] = useState({
+    id_equipo: 0,
+    id_informacionTipo: 0,
+    informacion_titulo: "",
+    informacion_cuerpo: "",
+  })
+
   useEffect(() => {
     (async () => {
       if (theresQuery) {
@@ -46,11 +53,16 @@ const NewsPost = () => {
           const info = await infoService.find(id_informacion)
           console.log("info:", info)
 
+          const infoType = await infoService.findType(info.id_informacionTipo)
+          console.log("infoType:", infoType)
+
           const team = await teamsService.find(info.id_equipo)
-          console.log("teams:", team)
+          console.log("team:", team)
 
           setInfo(info)
           setTeam(team)
+          setInfoType(infoType)
+
           setResources({ loadingResources: false })
 
         } catch (error) {
@@ -107,7 +119,7 @@ const NewsPost = () => {
           />
       }
 
-      <CalendarLinks />
+      <CalendarLinks {...{ info, team, infoType }} />
 
     </main>
   )

@@ -17,7 +17,6 @@ export const getTodaysDate = () => {
 
 export const getStartOfDay = (date) => {
   // (date: string)
-  debugger
   
   if (date) {
     date = date.split("-")
@@ -37,13 +36,13 @@ export const getStartOfDay = (date) => {
   // It turns into: '2020-10-14T19:29:31Z'
 }
 
-export const getDateFrom = (date, time) => {
+export const getDateFrom = (dateString, time) => {
   // (date: string | undefined | "" , time: string | undefined): Date
 
   let format = new Date();
   
   //Cuando no se ingresa fecha se establece la fecha de ese momento
-  date = new Date(getStartOfDay(date))
+  const date = new Date(getStartOfDay(dateString))
   
   if(time){ // "15:12" => ["15", "12"]
     time = time.split(":");
